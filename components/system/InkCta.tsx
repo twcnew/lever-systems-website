@@ -20,6 +20,7 @@ import {
   TEGAKI_TIMING,
   TEGAKI_WRITE_DURATION_S,
 } from "./tegakiInk";
+import { track } from "@/lib/analytics";
 
 const ROYAL_INK = "var(--royal)";
 
@@ -27,6 +28,9 @@ type InkCtaProps = {
   href: string;
   children: string;
   className?: string;
+  /** Analytics location, e.g. problem_ink | solution_ink | how_ink | plays_ink | proof_ink */
+  location?: string;
+  ctaId?: string;
 };
 
 function isInternalRoute(href: string) {
@@ -51,7 +55,13 @@ function wait(ms: number) {
   });
 }
 
-export function InkCta({ href, children, className = "" }: InkCtaProps) {
+export function InkCta({
+  href,
+  children,
+  className = "",
+  location = "ink",
+  ctaId,
+}: InkCtaProps) {
   const label = children;
   const rootRef = useRef<HTMLAnchorElement>(null);
   const handRef = useRef<HTMLSpanElement>(null);
@@ -63,6 +73,21 @@ export function InkCta({ href, children, className = "" }: InkCtaProps) {
   const [playing, setPlaying] = useState(false);
   const [instantComplete, setInstantComplete] = useState(false);
   const [phase, setPhase] = useState<"pending" | "writing" | "complete">("pending");
+
+  const handleTrack = () => {
+    const props = {
+      cta_id: ctaId ?? `ink_${location}`,
+      label,
+      location,
+      href: withBasePath(href),
+      ink_phase: phase,
+    };
+    track("cta_clicked", props);
+    track("ink_cta_clicked", props);
+    if (location === "case_related") {
+      track("case_related_cta_clicked", props);
+    }
+  };
 
   const totalDuration = useMemo(
     () => computeTimeline(label, caveat).totalDuration,
@@ -185,6 +210,7 @@ export function InkCta({ href, children, className = "" }: InkCtaProps) {
         className={classNames}
         href={resolvedHref}
         aria-label={label}
+        onClick={handleTrack}
       >
         {content}
       </Link>
@@ -197,6 +223,7 @@ export function InkCta({ href, children, className = "" }: InkCtaProps) {
       className={classNames}
       href={resolvedHref}
       aria-label={label}
+      onClick={handleTrack}
     >
       {content}
     </a>

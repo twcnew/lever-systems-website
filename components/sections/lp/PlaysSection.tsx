@@ -66,7 +66,9 @@ export function PlaysSection() {
       <PlaysMosaicDiagram motions={motions} />
       {cta && (
         <div className="plays-ink-cta">
-          <InkCta href={cta.href}>{cta.label}</InkCta>
+          <InkCta href={cta.href} location="plays_ink">
+            {cta.label}
+          </InkCta>
         </div>
       )}
     </LpModule>

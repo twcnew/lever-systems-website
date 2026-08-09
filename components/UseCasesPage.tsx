@@ -12,6 +12,7 @@ import {
   USE_CASES_INDEX_CONTENT,
   USE_CASES_INDEX_TITLE_ACCENT,
 } from "@/lib/useCasesIndexContent";
+import { track } from "@/lib/analytics";
 
 function annotatedTitleAccent(titleAccent: string) {
   if (!titleAccent.includes(USE_CASES_INDEX_TITLE_ACCENT)) {
@@ -42,6 +43,7 @@ export function UseCasesPage() {
   useEffect(() => {
     document.documentElement.classList.add("js");
     document.documentElement.classList.remove("no-js");
+    track("use_cases_index_viewed");
   }, []);
 
   return (
@@ -62,7 +64,11 @@ export function UseCasesPage() {
             }
             sub={sub}
           >
-            <ProofShowcase layout="grid" body="overview" />
+            <ProofShowcase
+              layout="grid"
+              body="overview"
+              source="use_cases_index"
+            />
           </LpModule>
         </div>
 

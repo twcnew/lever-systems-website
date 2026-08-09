@@ -62,7 +62,9 @@ export function SolutionSection() {
       <RevenueEngineDiagram />
       {cta && (
         <div className="how-ink-cta">
-          <InkCta href={cta.href}>{cta.label}</InkCta>
+          <InkCta href={cta.href} location="how_ink">
+            {cta.label}
+          </InkCta>
         </div>
       )}
     </LpModule>

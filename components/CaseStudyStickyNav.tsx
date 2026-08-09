@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CaseStudyNavItem } from "@/lib/caseStudies/types";
 import { smoothScrollBehavior } from "@/lib/prefersReducedMotion";
+import { track } from "@/lib/analytics";
 
 type CaseStudyStickyNavProps = {
   items: CaseStudyNavItem[];
@@ -10,6 +11,7 @@ type CaseStudyStickyNavProps = {
 
 export function CaseStudyStickyNav({ items }: CaseStudyStickyNavProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
+  const viewedRef = useRef(new Set<string>());
 
   useEffect(() => {
     const sections = items
@@ -27,7 +29,12 @@ export function CaseStudyStickyNav({ items }: CaseStudyStickyNavProps) {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id);
+          const id = visible[0].target.id;
+          setActiveId(id);
+          if (!viewedRef.current.has(id)) {
+            viewedRef.current.add(id);
+            track("case_section_viewed", { section_id: id });
+          }
         }
       },
       {
@@ -42,11 +49,13 @@ export function CaseStudyStickyNav({ items }: CaseStudyStickyNavProps) {
     return () => observer.disconnect();
   }, [items]);
 
-  const handleClick = (id: string) => {
+  const handleClick = (id: string, label: string) => {
     const target = document.getElementById(id);
     if (!target) {
       return;
     }
+
+    track("case_sticky_nav_clicked", { section_id: id, label });
 
     const topNav = document.querySelector(".topnav");
     const offset = (topNav?.getBoundingClientRect().height ?? 0) + 24;
@@ -64,7 +73,7 @@ export function CaseStudyStickyNav({ items }: CaseStudyStickyNavProps) {
             <button
               type="button"
               className={`cs-side-nav__link${activeId === item.id ? " is-active" : ""}`}
-              onClick={() => handleClick(item.id)}
+              onClick={() => handleClick(item.id, item.label)}
             >
               <span
                 className={`cs-side-nav__dot${activeId === item.id ? " is-on" : ""}`}

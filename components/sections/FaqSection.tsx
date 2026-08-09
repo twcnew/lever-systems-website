@@ -7,6 +7,7 @@ import {
 } from "@/lib/faqContent";
 import { InkAnnotate } from "../system/InkAnnotate";
 import { LpModule } from "../lp/LpModule";
+import { track } from "@/lib/analytics";
 
 function annotatedTitleAccent(titleAccent: string) {
   if (!titleAccent.includes(FAQ_TITLE_ACCENT_ANNOTATED)) {
@@ -56,7 +57,15 @@ export function FaqSection() {
                 className="lp-faq__question"
                 type="button"
                 aria-expanded={isOpen}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
+                onClick={() => {
+                  const nextOpen = !isOpen;
+                  setOpenIndex(nextOpen ? index : null);
+                  track("faq_toggled", {
+                    question: item.question,
+                    index,
+                    open: nextOpen,
+                  });
+                }}
               >
                 <span>{item.question}</span>
                 <span className="lp-faq__icon" aria-hidden="true">

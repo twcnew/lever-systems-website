@@ -100,7 +100,9 @@ export function WhatBreaksGrid({
         </div>
         {cta && (
           <div className="what-breaks__ink-cta">
-            <InkCta href={cta.href}>{cta.label}</InkCta>
+            <InkCta href={cta.href} location="problem_ink">
+              {cta.label}
+            </InkCta>
           </div>
         )}
       </div>

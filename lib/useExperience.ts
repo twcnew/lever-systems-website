@@ -77,16 +77,11 @@ export function useExperience(rootRef: RefObject<HTMLDivElement | null>) {
       });
     }
 
+    // Drawer chrome is wired site-wide in Chrome; keep ref for hash scroll close.
     const drawer = $("[data-drawer]");
-    const burger = $("[data-burger]");
-    if (drawer && burger) {
-      listen(burger, "click", () => drawer.classList.add("is-open"));
-      const close = drawer.querySelector("[data-drawer-close]");
-      if (close) listen(close as HTMLElement, "click", () => drawer.classList.remove("is-open"));
-      drawer.querySelectorAll("a").forEach((a) =>
-        listen(a as HTMLElement, "click", () => drawer.classList.remove("is-open")),
-      );
-    }
+    const closeDrawer = () => {
+      drawer?.classList.remove("is-open");
+    };
 
     const onDocClick = (e: MouseEvent) => {
       if (
@@ -106,7 +101,7 @@ export function useExperience(rootRef: RefObject<HTMLDivElement | null>) {
       if (anchor.classList.contains("topnav__brand")) {
         if (!onLanding) return;
         e.preventDefault();
-        drawer?.classList.remove("is-open");
+        closeDrawer();
         window.scrollTo({ top: 0, behavior: smoothScrollBehavior() });
         return;
       }
@@ -118,7 +113,7 @@ export function useExperience(rootRef: RefObject<HTMLDivElement | null>) {
       const el = document.getElementById(id);
       if (!el) return;
       e.preventDefault();
-      drawer?.classList.remove("is-open");
+      closeDrawer();
       el.scrollIntoView({ behavior: smoothScrollBehavior(), block: "start" });
     };
     listen(document.body, "click", onDocClick as EventListener);

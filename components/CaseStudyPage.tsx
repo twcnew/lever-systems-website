@@ -12,6 +12,7 @@ import { CaseStudyHero } from "./CaseStudyHero";
 import { CaseStudyNavTheme } from "./CaseStudyNavTheme";
 import { CaseStudySideNavVisual } from "./CaseStudySideNavVisual";
 import { CaseStudyVisualSlot } from "./CaseStudyVisualSlot";
+import { CaseStudyExternalLink } from "./CaseStudyExternalLink";
 import { Drawer, TopNav } from "./Chrome";
 import { SiteFooter } from "./lp/SiteFooter";
 import { ClosingSection } from "./sections/ClosingSection";
@@ -41,14 +42,11 @@ function CaseStudyMetaCard({ study }: { study: CaseStudy }) {
       <span className="cs-glance__card-label">Company</span>
       <p className="cs-glance__desc">{study.companyDescription}</p>
       {study.websiteUrl?.startsWith("http") && (
-        <a
-          className="cs-glance__link"
-          href={study.websiteUrl}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Visit {study.company} ↗
-        </a>
+        <CaseStudyExternalLink
+          company={study.company}
+          slug={study.slug}
+          url={study.websiteUrl}
+        />
       )}
       <dl className="cs-glance__meta">
         <div>

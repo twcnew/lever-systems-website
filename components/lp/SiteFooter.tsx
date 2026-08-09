@@ -7,6 +7,11 @@ import { FounderNameInk } from "../system/FounderNameInk";
 import { ABOUT_CONTENT } from "@/lib/aboutContent";
 import { FOOTER_CONTENT } from "@/lib/footerContent";
 import { withBasePath } from "@/lib/basePath";
+import { track } from "@/lib/analytics";
+
+function socialNetwork(label: string): "linkedin" | "x" {
+  return label.toLowerCase().includes("linkedin") ? "linkedin" : "x";
+}
 
 export function SiteFooter() {
   const { founder } = ABOUT_CONTENT;
@@ -14,6 +19,7 @@ export function SiteFooter() {
 
   const handleSubscribe = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    track("newsletter_submit_attempted", { location: "footer" });
     setSubscribeNote(FOOTER_CONTENT.subscribe.comingSoon);
   };
 
@@ -103,6 +109,13 @@ export function SiteFooter() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      track("social_outbound_clicked", {
+                        network: socialNetwork(link.label),
+                        location: "footer",
+                        href: link.href,
+                      })
+                    }
                   >
                     {link.label}
                     <span aria-hidden="true"> ↗</span>

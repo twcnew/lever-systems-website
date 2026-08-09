@@ -77,7 +77,9 @@ export function SolutionPipelineSection() {
       </div>
       {cta && (
         <div className="solution-ink-cta">
-          <InkCta href={cta.href}>{cta.label}</InkCta>
+          <InkCta href={cta.href} location="solution_ink">
+            {cta.label}
+          </InkCta>
         </div>
       )}
     </LpModule>

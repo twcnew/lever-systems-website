@@ -6,6 +6,7 @@ import { prefersReducedMotion } from "@/lib/prefersReducedMotion";
 import { CASE_STUDY_LOGOS } from "@/lib/caseStudies";
 import type { CaseStudy } from "@/lib/caseStudies/types";
 import { withBasePath } from "@/lib/basePath";
+import { track, trackCase } from "@/lib/analytics";
 
 const CAROUSEL_INTERVAL_MS = 4500;
 
@@ -18,6 +19,13 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
   const metrics = study.heroMetrics;
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    trackCase("case_study_viewed", {
+      slug: study.slug,
+      company: study.company,
+    });
+  }, [study.slug, study.company]);
 
   const heroWash = study.heroBackground ?? study.brandColor;
   const accentTone = (() => {
@@ -53,7 +61,17 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
         <div className="cs-hero__frame">
           <div className="cs-hero__row cs-hero__row--crumbs">
             <nav className="cs-hero__crumbs" aria-label="Breadcrumb">
-              <Link href="/use-cases">All case studies</Link>
+              <Link
+                href="/use-cases"
+                onClick={() =>
+                  track("case_breadcrumb_clicked", {
+                    slug: study.slug,
+                    href: "/use-cases",
+                  })
+                }
+              >
+                All case studies
+              </Link>
               <span aria-hidden="true">/</span>
               <span>{study.company.toUpperCase()}</span>
             </nav>
@@ -134,7 +152,13 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
                           className={`cs-hero__dot${index === activeIndex ? " is-active" : ""}`}
                           aria-selected={index === activeIndex}
                           aria-label={`${metric.value}, ${metric.label}`}
-                          onClick={() => setActiveIndex(index)}
+                          onClick={() => {
+                            setActiveIndex(index);
+                            track("case_metric_dot_clicked", {
+                              slug: study.slug,
+                              metric_index: index,
+                            });
+                          }}
                         />
                       ))}
                     </div>

@@ -61,12 +61,14 @@ export function ProofSection() {
       titleAccent={titleAccent ? annotatedTitleAccent(titleAccent) : undefined}
       sub={sub ? annotatedSub(sub) : undefined}
     >
-      <ProofShowcase />
-      {cta && (
-        <div className="proof-ink-cta">
-          <InkCta href={cta.href}>{cta.label}</InkCta>
-        </div>
-      )}
+      <ProofShowcase source="homepage_proof" surface="homepage" />
+        {cta && (
+          <div className="proof-ink-cta">
+            <InkCta href={cta.href} location="proof_ink">
+              {cta.label}
+            </InkCta>
+          </div>
+        )}
     </LpModule>
   );
 }

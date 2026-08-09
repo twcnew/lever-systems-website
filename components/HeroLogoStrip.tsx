@@ -1,5 +1,8 @@
+"use client";
+
 import { HERO_LOGO_ENTRIES } from "@/lib/heroLogoStrip";
 import { withBasePath } from "@/lib/basePath";
+import { track } from "@/lib/analytics";
 
 export function HeroLogoStrip() {
   return (
@@ -11,6 +14,7 @@ export function HeroLogoStrip() {
             <a
               className={`hero__logo-mark ${markClass}`}
               href={caseStudyHref ? withBasePath(caseStudyHref) : "#"}
+              onClick={() => track("hero_logo_clicked", { slug: id })}
             >
               <Logo />
             </a>

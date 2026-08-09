@@ -19,6 +19,7 @@ import { FaqSection } from "./sections/FaqSection";
 import { ClosingSection } from "./sections/ClosingSection";
 import { SiteFooter } from "./lp/SiteFooter";
 import { ABOUT_CONTENT } from "@/lib/aboutContent";
+import { track, trackCta } from "@/lib/analytics";
 
 const SUB_LINES = [
   "One GTM engineer who turns your market's signals into booked meetings, inside your own stack.",
@@ -46,6 +47,13 @@ export function LumioHome() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${ABOUT_CONTENT.founder.name} on LinkedIn`}
+            onClick={() =>
+              track("social_outbound_clicked", {
+                network: "linkedin",
+                location: "hero_pill",
+                href: ABOUT_CONTENT.founder.linkedinUrl,
+              })
+            }
           >
             <HeroPillAvatar />
             <span className="label">{ABOUT_CONTENT.founder.role}</span>
@@ -68,7 +76,18 @@ export function LumioHome() {
             ))}
           </p>
           <div className="hero__ctas" data-ctas>
-            <a className="btn btn-solid" href="#contact">
+            <a
+              className="btn btn-solid"
+              href="#contact"
+              onClick={() =>
+                trackCta({
+                  cta_id: "hero_book_call",
+                  label: "Book a Strategy Call",
+                  location: "hero",
+                  href: "#contact",
+                })
+              }
+            >
               <span>Book a Strategy Call</span>
               <VideoCall />
             </a>

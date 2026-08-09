@@ -70,10 +70,20 @@ export function CaseStudyRelated({ study }: CaseStudyRelatedProps) {
         titleAccent={titleAccent ? annotatedTitleAccent(titleAccent) : undefined}
         sub={sub ? annotatedSub(sub) : undefined}
       >
-        <ProofShowcase excludeSlug={study.slug} />
+        <ProofShowcase
+          excludeSlug={study.slug}
+          source="case_study_related"
+          surface="related"
+        />
         {cta && (
           <div className="proof-ink-cta">
-            <InkCta href={cta.href}>{cta.label}</InkCta>
+            <InkCta
+              href={cta.href}
+              location="case_related"
+              ctaId="case_related_see_all"
+            >
+              {cta.label}
+            </InkCta>
           </div>
         )}
       </LpModule>

@@ -4,6 +4,39 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { Brand } from "./icons";
 import { NAV_CTA, NAV_ITEMS, type NavGroupItem, type NavItem } from "@/lib/navContent";
+import { track, trackCta, trackNav } from "@/lib/analytics";
+
+/** Site-wide drawer open/close (homepage also uses useExperience; idempotent). */
+function useDrawerChrome() {
+  useEffect(() => {
+    const drawer = document.querySelector("[data-drawer]");
+    const burger = document.querySelector("[data-burger]");
+    if (!drawer || !burger) return;
+
+    const openDrawer = () => {
+      if (!drawer.classList.contains("is-open")) track("drawer_opened");
+      drawer.classList.add("is-open");
+    };
+    const closeDrawer = () => {
+      if (drawer.classList.contains("is-open")) track("drawer_closed");
+      drawer.classList.remove("is-open");
+    };
+
+    const onBurger = () => openDrawer();
+    const onCloseBtn = () => closeDrawer();
+    burger.addEventListener("click", onBurger);
+    const closeBtn = drawer.querySelector("[data-drawer-close]");
+    closeBtn?.addEventListener("click", onCloseBtn);
+    const links = [...drawer.querySelectorAll("a")];
+    links.forEach((a) => a.addEventListener("click", closeDrawer));
+
+    return () => {
+      burger.removeEventListener("click", onBurger);
+      closeBtn?.removeEventListener("click", onCloseBtn);
+      links.forEach((a) => a.removeEventListener("click", closeDrawer));
+    };
+  }, []);
+}
 
 function TopNavDropdown({ group }: { group: NavGroupItem }) {
   const menuId = useId();
@@ -20,6 +53,7 @@ function TopNavDropdown({ group }: { group: NavGroupItem }) {
 
   const openMenu = () => {
     clearCloseTimer();
+    if (!open) track("nav_resources_opened", { label: group.label, surface: "topnav" });
     setOpen(true);
   };
 
@@ -73,7 +107,11 @@ function TopNavDropdown({ group }: { group: NavGroupItem }) {
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={menuId}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          const next = !open;
+          if (next) track("nav_resources_opened", { label: group.label, surface: "topnav" });
+          setOpen(next);
+        }}
       >
         {group.label}
         <span className="topnav__group-caret" aria-hidden="true">
@@ -100,7 +138,10 @@ function TopNavDropdown({ group }: { group: NavGroupItem }) {
               href={item.href}
               key={item.label}
               role="menuitem"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                trackNav({ label: item.label, href: item.href!, surface: "topnav" });
+                setOpen(false);
+              }}
             >
               {item.label}
             </Link>
@@ -120,7 +161,11 @@ function DrawerNavGroup({ group }: { group: NavGroupItem }) {
         type="button"
         className="drawer__group-trigger"
         aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          const next = !open;
+          if (next) track("nav_resources_opened", { label: group.label, surface: "drawer" });
+          setOpen(next);
+        }}
       >
         {group.label}
         <span className="drawer__group-caret" aria-hidden="true">
@@ -140,7 +185,14 @@ function DrawerNavGroup({ group }: { group: NavGroupItem }) {
               ) : null}
             </span>
           ) : (
-            <Link className="drawer__sub-item" href={item.href} key={item.label}>
+            <Link
+              className="drawer__sub-item"
+              href={item.href}
+              key={item.label}
+              onClick={() =>
+                trackNav({ label: item.label, href: item.href!, surface: "drawer" })
+              }
+            >
               {item.label}
             </Link>
           ),
@@ -156,7 +208,11 @@ function renderNavItem(item: NavItem) {
   }
 
   return (
-    <Link href={item.href} key={item.label}>
+    <Link
+      href={item.href}
+      key={item.label}
+      onClick={() => trackNav({ label: item.label, href: item.href, surface: "topnav" })}
+    >
       {item.label}
     </Link>
   );
@@ -168,13 +224,19 @@ function renderDrawerItem(item: NavItem) {
   }
 
   return (
-    <Link href={item.href} key={item.label}>
+    <Link
+      href={item.href}
+      key={item.label}
+      onClick={() => trackNav({ label: item.label, href: item.href, surface: "drawer" })}
+    >
       {item.label}
     </Link>
   );
 }
 
 export function TopNav() {
+  useDrawerChrome();
+
   return (
     <nav className="topnav is-glass" data-nav>
       <Link className="topnav__brand" href="/" aria-label="Lever">
@@ -184,7 +246,23 @@ export function TopNav() {
         {NAV_ITEMS.map(renderNavItem)}
       </div>
       <div className="topnav__right">
-        <Link className="topnav__cta" href={NAV_CTA.href}>
+        <Link
+          className="topnav__cta"
+          href={NAV_CTA.href}
+          onClick={() => {
+            track("nav_cta_clicked", {
+              label: NAV_CTA.label,
+              href: NAV_CTA.href,
+              surface: "topnav",
+            });
+            trackCta({
+              cta_id: "nav_book_call",
+              label: NAV_CTA.label,
+              location: "topnav",
+              href: NAV_CTA.href,
+            });
+          }}
+        >
           <span>{NAV_CTA.label}</span>
         </Link>
         <button className="topnav__burger" data-burger aria-label="Menu">
@@ -204,7 +282,23 @@ export function Drawer() {
         ✕
       </button>
       {NAV_ITEMS.map(renderDrawerItem)}
-      <Link className="drawer__cta" href={NAV_CTA.href}>
+      <Link
+        className="drawer__cta"
+        href={NAV_CTA.href}
+        onClick={() => {
+          track("nav_cta_clicked", {
+            label: NAV_CTA.label,
+            href: NAV_CTA.href,
+            surface: "drawer",
+          });
+          trackCta({
+            cta_id: "drawer_book_call",
+            label: NAV_CTA.label,
+            location: "drawer",
+            href: NAV_CTA.href,
+          });
+        }}
+      >
         {NAV_CTA.label}
       </Link>
     </div>
