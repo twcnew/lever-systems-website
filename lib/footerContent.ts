@@ -9,7 +9,7 @@ export const FOOTER_CONTENT = {
   },
   brand: {
     name: "Lever",
-    tagline: "Autonomous AI systems for GTM teams",
+    tagline: "Personalized AI systems for GTM teams",
   },
   social: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/alexis-rodrigues1/" },

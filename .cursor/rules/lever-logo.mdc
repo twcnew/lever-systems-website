@@ -1,0 +1,21 @@
+---
+description: Official Lever wordmark — never use the straighter/fake LEVER cut
+alwaysApply: true
+---
+
+# Lever logo
+
+**Only** use the official rounded lowercase wordmark:
+
+- React: `components/logos/LeverLogo.tsx` via `<Brand />` or `<LeverLogo />`
+- Static SVG: `public/lever-wordmark.svg`
+- Raster (OG/favicon only): `public/lever-wordmark.png` (same rounded geometry)
+
+## Never use / never regenerate
+
+- Straighter / caps / Arial-like **LEVER** cuts
+- Old triangle `app/favicon.ico`
+- Legacy filenames reinvented as a different typeface
+- Hard-edged rectangle “L” paths that don’t match the rounded wordmark
+
+If you need a favicon letter, crop the **l** from `lever-wordmark.png` / the SVG — do not invent a new L.

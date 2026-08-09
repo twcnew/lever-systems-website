@@ -1,9 +1,9 @@
-import { withBasePath } from "@/lib/basePath";
+import { LeverLogo } from "@/components/logos/LeverLogo";
 
 /* Hand-drawn SVG marks — every asset on the site is original and owned. */
 
-// Asset filename is legacy; the file contains the Lever wordmark lettering.
-export const LEVER_WORDMARK_SRC = withBasePath("/frontral-wordmark.png");
+/** @deprecated Prefer <Brand /> / <LeverLogo />. Raster kept only for OG/favicon generation. */
+export const LEVER_WORDMARK_SRC = "/lever-wordmark.png";
 
 export function LumioMark({ className }: { className?: string }) {
   // abstract "ledger valley" mark: two peaks dipping into a basin
@@ -14,13 +14,10 @@ export function LumioMark({ className }: { className?: string }) {
   );
 }
 
+/** Official Lever wordmark (rounded lowercase SVG). */
 export function Brand({ className }: { className?: string }) {
   return (
-    <img
-      className={`brand__wordmark${className ? ` ${className}` : ""}`}
-      src={LEVER_WORDMARK_SRC}
-      alt="Lever"
-    />
+    <LeverLogo className={`brand__wordmark${className ? ` ${className}` : ""}`} />
   );
 }
 

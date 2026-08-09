@@ -55,7 +55,7 @@ export function LumioHome() {
             className="hero__title"
             step={28}
             segments={[
-              { text: "Building autonomous AI systems" },
+              { text: "Building personalized AI systems" },
               { text: "for your ", className: "row2", breakBefore: true },
               { text: "GTM team.", className: "row2 accent" },
             ] satisfies Segment[]}

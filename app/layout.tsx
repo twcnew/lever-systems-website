@@ -26,36 +26,45 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Lever — Autonomous AI Systems for GTM Teams",
+    default: "Lever — Personalized AI Systems for GTM Teams",
     template: "%s — Lever",
   },
   description:
     "AI-native GTM engineer. I design and build signal-led outbound, inbound routing, and revenue workflows inside your stack — pipeline on autopilot.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/",
     siteName: "Lever",
-    title: "Lever — Autonomous AI Systems for GTM Teams",
+    title: "Lever — Personalized AI Systems for GTM Teams",
     description:
       "AI-native GTM engineer. Signal-led outbound, inbound routing, and revenue workflows inside your stack.",
     images: [
       {
         // New path + query bust Slack/Discord OG caches
-        url: "/og.jpg?v=4",
+        url: "/og.jpg?v=7",
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "Lever — Autonomous AI systems for GTM teams",
+        alt: "Lever — Personalized AI systems for GTM teams",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lever — Autonomous AI Systems for GTM Teams",
+    title: "Lever — Personalized AI Systems for GTM Teams",
     description:
       "AI-native GTM engineer. Signal-led outbound, inbound routing, and revenue workflows inside your stack.",
-    images: ["/og.jpg?v=4"],
+    images: ["/og.jpg?v=7"],
   },
 };
 

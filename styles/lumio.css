@@ -228,8 +228,8 @@
   display: block;
   height: 19px;
   width: auto;
-  filter: brightness(0) invert(1);
-  transition: filter 0.4s ease;
+  color: #fff;
+  transition: color 0.4s ease;
 }
 .topnav__brand .wordmark {
   font-size: 19px;
@@ -431,7 +431,7 @@
 }
 .topnav.is-dark .topnav__brand .brand__mark,
 .topnav.is-dark .topnav__brand .brand__wordmark {
-  filter: none;
+  color: var(--ink, #0a0a0a);
 }
 .topnav.is-dark .topnav__brand .wordmark,
 .topnav.is-dark .topnav__signin {
@@ -652,7 +652,7 @@
   display: block;
   height: 19px;
   width: auto;
-  filter: brightness(0) invert(1);
+  color: #fff;
 }
 .stage__logo .wordmark {
   font-size: 19px;
@@ -11331,6 +11331,7 @@ html.use-cases-index-page .use-cases-index .lp--clay {
 .site-footer__author-cell--brand .brand__wordmark {
   width: min(180px, 70%);
   height: auto;
+  color: var(--ink, #0a0a0a);
 }
 
 .site-footer__author-cell--portrait {

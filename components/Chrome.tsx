@@ -177,7 +177,7 @@ function renderDrawerItem(item: NavItem) {
 export function TopNav() {
   return (
     <nav className="topnav is-glass" data-nav>
-      <Link className="topnav__brand" href="/">
+      <Link className="topnav__brand" href="/" aria-label="Lever">
         <Brand />
       </Link>
       <div className="topnav__links">
