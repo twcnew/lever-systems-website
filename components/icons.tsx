@@ -1,4 +1,9 @@
+import { withBasePath } from "@/lib/basePath";
+
 /* Hand-drawn SVG marks — every asset on the site is original and owned. */
+
+// Asset filename is legacy; the file contains the Lever wordmark lettering.
+export const LEVER_WORDMARK_SRC = withBasePath("/frontral-wordmark.png");
 
 export function LumioMark({ className }: { className?: string }) {
   // abstract "ledger valley" mark: two peaks dipping into a basin
@@ -11,10 +16,11 @@ export function LumioMark({ className }: { className?: string }) {
 
 export function Brand({ className }: { className?: string }) {
   return (
-    <>
-      <LumioMark className={className} />
-      <span className="wordmark">AI Native GTM</span>
-    </>
+    <img
+      className={`brand__wordmark${className ? ` ${className}` : ""}`}
+      src={LEVER_WORDMARK_SRC}
+      alt="Lever"
+    />
   );
 }
 
@@ -23,6 +29,37 @@ export function DoubleArrows() {
   return (
     <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
       <path d="M10.5 2.5h5v5M15.5 2.5 9.8 8.2M7.5 15.5h-5v-5M2.5 15.5l5.7-5.7" />
+    </svg>
+  );
+}
+
+/** Google Meet icon (2020) — official brand colors for "book a call" CTAs. */
+export function VideoCall() {
+  return (
+    <svg
+      viewBox="0 0 87.5 72"
+      fill="none"
+      aria-hidden="true"
+      className="icon-meet"
+    >
+      <path
+        fill="#00832d"
+        d="M49.5 36l8.53 9.75 11.47 7.33 2-17.02-2-16.64-11.69 6.44z"
+      />
+      <path
+        fill="#0066da"
+        d="M0 51.5V66c0 3.315 2.685 6 6 6h14.5l3-10.96-3-9.54-9.95-3z"
+      />
+      <path fill="#e94235" d="M20.5 0L0 20.5l10.55 3 9.95-3 2.95-9.41z" />
+      <path fill="#2684fc" d="M20.5 20.5H0v31h20.5z" />
+      <path
+        fill="#00ac47"
+        d="M82.6 8.68L69.5 19.42v33.66l13.16 10.79c1.97 1.54 4.85.135 4.85-2.37V11c0-2.535-2.945-3.925-4.91-2.32zM49.5 36v15.5h-29V72h43c3.315 0 6-2.685 6-6V53.08z"
+      />
+      <path
+        fill="#ffba00"
+        d="M63.5 0h-43v20.5h29V36l20-16.57V6c0-3.315-2.685-6-6-6z"
+      />
     </svg>
   );
 }
@@ -133,7 +170,7 @@ export function SparkleAI() {
 
 export function CashIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="#2352DE" strokeWidth="1.5" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#5A8BE4" strokeWidth="1.5" aria-hidden="true">
       <rect x="2.5" y="6.5" width="19" height="11" rx="2" />
       <circle cx="12" cy="12" r="2.6" />
       <path d="M6 9.5v0M18 14.5v0" strokeLinecap="round" strokeWidth="2" />
@@ -202,6 +239,14 @@ export function PinwheelMark() {
       <rect x="13.5" y="18" width="5" height="12" rx="2.5" fill="#2EB67D" />
       <rect x="2" y="13.5" width="12" height="5" rx="2.5" fill="#ECB22E" />
       <rect x="18" y="13.5" width="12" height="5" rx="2.5" fill="#36C5F0" />
+    </svg>
+  );
+}
+
+export function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v9A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 12.5 2h-9ZM5 6.25V12H3.5V6.25H5Zm-.75-1.5a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75ZM12 12h-1.5V9.25c0-.75-.15-1.75-1.35-1.75-1.35 0-1.55 1.05-1.55 2.13V12H6.5V6.25h1.44v1.02h.02c.2-.38.7-1.25 1.75-1.25 1.87 0 2.22 1.23 2.22 2.83V12Z" />
     </svg>
   );
 }

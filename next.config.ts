@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 /**
- * Static export for GitHub Pages.
+ * Static export for Vercel (root domain) and optional GitHub Pages.
  *
- * Local dev/build serve from "/". When building for Pages (GH_PAGES=true),
+ * Local / Vercel: serve from "/". When building for Pages (GH_PAGES=true),
  * the site lives at https://<user>.github.io/<repo>/, so we prefix every
  * asset path with `/<repo>`.
  */

@@ -6,14 +6,16 @@ export type Segment = {
   className?: string;
   /** render a <br/> before this segment */
   breakBefore?: boolean;
-  /** extra delay (ms) added before this segment's first letter */
+  /** extra delay (ms) added before this segment's first unit */
   pauseBefore?: number;
 };
 
 type SplitTextProps = {
   segments: Segment[];
-  /** per-letter stagger in ms */
+  /** stagger between units in ms */
   step: number;
+  /** split by letter (default) or by word */
+  unit?: "letter" | "word";
   /** extra class on the wrapper (the wrapper carries .split-wait) */
   className?: string;
   as?: "h1" | "h2" | "span" | "div";
@@ -21,11 +23,18 @@ type SplitTextProps = {
 };
 
 /**
- * Pre-splits text into per-letter spans so CSS can stagger them with
- * `animation-delay: var(--d)`. Words are wrapped in nowrap containers so
- * lines never break mid-word. The container reveals when it gains `.in`.
+ * Pre-splits text into staggered spans so CSS can reveal them with
+ * `animation-delay: var(--d)`. Words stay in nowrap wrappers so lines
+ * never break mid-word. The container reveals when it gains `.in`.
  */
-export function SplitText({ segments, step, className, as: Tag = "span", style }: SplitTextProps) {
+export function SplitText({
+  segments,
+  step,
+  unit = "letter",
+  className,
+  as: Tag = "span",
+  style,
+}: SplitTextProps) {
   let i = 0;
   let delay = 0;
   const out: ReactNode[] = [];
@@ -39,19 +48,44 @@ export function SplitText({ segments, step, className, as: Tag = "span", style }
       if (!word) continue;
       if (/^\s+$/.test(word)) {
         nodes.push(
-          <span key={`g-${i}`} className="lt gap" style={{ "--d": `${delay}ms` } as CSSProperties}>
+          <span
+            key={`g-${i}`}
+            className="lt gap"
+            style={{ "--d": `${delay}ms` } as CSSProperties}
+          >
             {" "}
+          </span>,
+        );
+        if (unit === "letter") delay += step;
+        i++;
+        continue;
+      }
+
+      if (unit === "word") {
+        nodes.push(
+          <span key={`w-${i}`} className="w" aria-hidden="true">
+            <span
+              className="lt"
+              style={{ "--d": `${delay}ms` } as CSSProperties}
+            >
+              {word}
+            </span>
           </span>,
         );
         delay += step;
         i++;
         continue;
       }
+
       nodes.push(
         <span key={`w-${i}`} className="w" aria-hidden="true">
           {[...word].map((ch) => {
             const el = (
-              <span key={i} className="lt" style={{ "--d": `${delay}ms` } as CSSProperties}>
+              <span
+                key={i}
+                className="lt"
+                style={{ "--d": `${delay}ms` } as CSSProperties}
+              >
                 {ch}
               </span>
             );
@@ -76,7 +110,11 @@ export function SplitText({ segments, step, className, as: Tag = "span", style }
 
   const label = segments.map((s) => s.text).join(" ");
   return (
-    <Tag className={`split-wait${className ? ` ${className}` : ""}`} aria-label={label} style={style}>
+    <Tag
+      className={`split-wait${className ? ` ${className}` : ""}`}
+      aria-label={label}
+      style={style}
+    >
       {out}
     </Tag>
   );

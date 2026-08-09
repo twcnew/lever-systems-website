@@ -2,22 +2,36 @@
 @import "../styles/lumio.css";
 
 :root {
-  /* design tokens — measured on the reference design */
+  /* design tokens */
   --ink: #0e0a07;
   --paper: #fefefe;
-  --steel: #18498b; /* deep button blue */
-  --royal: #2352de; /* accent blue */
-  --sky: #3372d9;
+  --canvas: #fffaf0;
+  --steel: #4a6fa8;
+  --royal: #5a8be4;
+  --sky: #7ba5f0;
+  --royal-rgb: 90, 139, 228;
   --violet: #8669b9;
+  --card-sky: #dce9f7;
+  --card-sand: #f3e8d4;
+  --card-mint: #d8efe6;
+  --card-lilac: #e8dff5;
+  --card-peach: #fde8d8;
   --hairline: rgba(14, 10, 7, 0.07);
   --hairline-2: rgba(14, 10, 7, 0.05);
   --muted: rgba(14, 10, 7, 0.45);
   --muted-2: rgba(14, 10, 7, 0.55);
   --muted-3: rgba(14, 10, 7, 0.35);
 
+  --site-max: 1100px;
+  --site-gutter: clamp(24px, 5vw, 64px);
+  --site-copy-col: calc((var(--site-max) - clamp(32px, 5vw, 48px)) / 2);
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), ui-serif, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Font audit: 3 families max (sans for titles/body/labels, serif for title
+     accents, Caveat for handwritten ink). Labels formerly set in Geist Mono
+     now resolve to the sans stack — size/color/tracking do the differentiation. */
+  --font-mono: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
@@ -35,7 +49,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--paper);
+  background: var(--canvas);
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

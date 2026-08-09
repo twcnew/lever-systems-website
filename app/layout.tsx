@@ -41,9 +41,11 @@ export const metadata: Metadata = {
       "AI-native GTM engineer. Signal-led outbound, inbound routing, and revenue workflows inside your stack.",
     images: [
       {
-        url: "/og-lever.jpg",
+        // New path + query bust Slack/Discord OG caches
+        url: "/og.jpg?v=4",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Lever — Autonomous AI systems for GTM teams",
       },
     ],
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
     title: "Lever — Autonomous AI Systems for GTM Teams",
     description:
       "AI-native GTM engineer. Signal-led outbound, inbound routing, and revenue workflows inside your stack.",
-    images: ["/og-lever.jpg"],
+    images: ["/og.jpg?v=4"],
   },
 };
 

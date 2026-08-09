@@ -1,0 +1,347 @@
+[
+  {
+    "slug": "adyntel",
+    "name": "Adyntel",
+    "domain": "adyntel.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=adyntel.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "adyntel.png"
+  },
+  {
+    "slug": "ai-ark",
+    "name": "AI Ark",
+    "domain": "ai-ark.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=ai-ark.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "ai-ark.png"
+  },
+  {
+    "slug": "apollo",
+    "name": "Apollo",
+    "domain": "apollo.io",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=apollo.io&sz=64",
+    "logoType": "favicon",
+    "logoFile": "apollo.png"
+  },
+  {
+    "slug": "attio",
+    "name": "Attio",
+    "domain": "attio.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=attio.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "attio.png"
+  },
+  {
+    "slug": "blitzapi",
+    "name": "BlitzAPI",
+    "domain": null,
+    "sourceUrl": "https://framerusercontent.com/images/dlI36XubtK5QkQdpIqk8RvjL04.png?width=260&height=255",
+    "logoType": "framer",
+    "logoFile": "blitzapi.png"
+  },
+  {
+    "slug": "bounceban",
+    "name": "BounceBan",
+    "domain": "bounceban.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=bounceban.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "bounceban.png"
+  },
+  {
+    "slug": "builtwith",
+    "name": "BuiltWith",
+    "domain": "builtwith.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=builtwith.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "builtwith.png"
+  },
+  {
+    "slug": "career-site-jobs",
+    "name": "Career Site Jobs",
+    "domain": null,
+    "sourceUrl": "",
+    "logoType": "external",
+    "logoFile": "career-site-jobs.placeholder.svg",
+    "isPlaceholder": true
+  },
+  {
+    "slug": "coldiq",
+    "name": "ColdIQ",
+    "domain": null,
+    "sourceUrl": "https://coldiq.com/images/providers/coldiq-mark-orange.png",
+    "logoType": "coldiq-hosted",
+    "logoFile": "coldiq.png"
+  },
+  {
+    "slug": "companyenrich",
+    "name": "CompanyEnrich",
+    "domain": "companyenrich.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=companyenrich.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "companyenrich.png"
+  },
+  {
+    "slug": "dataforseo",
+    "name": "DataForSEO",
+    "domain": "dataforseo.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=dataforseo.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "dataforseo.png"
+  },
+  {
+    "slug": "discolike",
+    "name": "DiscoLike",
+    "domain": "discolike.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=discolike.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "discolike.png"
+  },
+  {
+    "slug": "exa",
+    "name": "Exa",
+    "domain": "exa.ai",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=exa.ai&sz=64",
+    "logoType": "favicon",
+    "logoFile": "exa.png"
+  },
+  {
+    "slug": "findymail",
+    "name": "Findymail",
+    "domain": "findymail.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=findymail.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "findymail.png"
+  },
+  {
+    "slug": "fullenrich",
+    "name": "FullEnrich",
+    "domain": "fullenrich.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=fullenrich.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "fullenrich.png"
+  },
+  {
+    "slug": "google-ads",
+    "name": "Google Ads",
+    "domain": "ads.google.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=ads.google.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "google-ads.png"
+  },
+  {
+    "slug": "google-maps",
+    "name": "Google Maps",
+    "domain": "maps.google.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=maps.google.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "google-maps.png"
+  },
+  {
+    "slug": "gtm-verbs",
+    "name": "GTM Verbs",
+    "domain": null,
+    "sourceUrl": "https://coldiq.com/images/providers/coldiq-mark-orange.png",
+    "logoType": "coldiq-hosted",
+    "logoFile": "gtm-verbs.png"
+  },
+  {
+    "slug": "icypeas",
+    "name": "Icypeas",
+    "domain": "icypeas.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=icypeas.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "icypeas.png"
+  },
+  {
+    "slug": "influencers-club",
+    "name": "Influencers Club",
+    "domain": null,
+    "sourceUrl": "https://influencers.club/wp-content/themes/understrap-child-main/assets/img/logo.svg",
+    "logoType": "external",
+    "logoFile": "influencers-club.svg"
+  },
+  {
+    "slug": "instantly",
+    "name": "Instantly",
+    "domain": "instantly.ai",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=instantly.ai&sz=64",
+    "logoType": "favicon",
+    "logoFile": "instantly.png"
+  },
+  {
+    "slug": "jina",
+    "name": "Jina",
+    "domain": "jina.ai",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=jina.ai&sz=64",
+    "logoType": "favicon",
+    "logoFile": "jina.png"
+  },
+  {
+    "slug": "jungler",
+    "name": "Jungler",
+    "domain": "jungler.io",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=jungler.io&sz=64",
+    "logoType": "favicon",
+    "logoFile": "jungler.png"
+  },
+  {
+    "slug": "leadmagic",
+    "name": "LeadMagic",
+    "domain": "leadmagic.io",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=leadmagic.io&sz=64",
+    "logoType": "favicon",
+    "logoFile": "leadmagic.png"
+  },
+  {
+    "slug": "leadsfactory",
+    "name": "LeadsFactory",
+    "domain": "leadsfactory.io",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=leadsfactory.io&sz=64",
+    "logoType": "favicon",
+    "logoFile": "leadsfactory.png"
+  },
+  {
+    "slug": "lemlist",
+    "name": "Lemlist",
+    "domain": "lemlist.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=lemlist.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "lemlist.png"
+  },
+  {
+    "slug": "linkedin-ad-library",
+    "name": "LinkedIn Ad Library",
+    "domain": "linkedin.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=linkedin.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "linkedin-ad-library.png"
+  },
+  {
+    "slug": "linkedin-jobs-api",
+    "name": "LinkedIn Jobs API",
+    "domain": "linkedin.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=linkedin.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "linkedin-jobs-api.png"
+  },
+  {
+    "slug": "linkup-api",
+    "name": "LinkUp API",
+    "domain": "linkupapi.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=linkupapi.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "linkup-api.png"
+  },
+  {
+    "slug": "meta-ads-library",
+    "name": "Meta Ads Library",
+    "domain": "facebook.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=facebook.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "meta-ads-library.png"
+  },
+  {
+    "slug": "openmart",
+    "name": "Openmart",
+    "domain": "openmart.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=openmart.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "openmart.png"
+  },
+  {
+    "slug": "people-data-labs",
+    "name": "People Data Labs",
+    "domain": "peopledatalabs.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=peopledatalabs.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "people-data-labs.png"
+  },
+  {
+    "slug": "predictleads",
+    "name": "PredictLeads",
+    "domain": "predictleads.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=predictleads.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "predictleads.png"
+  },
+  {
+    "slug": "prospeo",
+    "name": "Prospeo",
+    "domain": "prospeo.io",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=prospeo.io&sz=64",
+    "logoType": "favicon",
+    "logoFile": "prospeo.png"
+  },
+  {
+    "slug": "reddit",
+    "name": "Reddit",
+    "domain": "reddit.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=reddit.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "reddit.png"
+  },
+  {
+    "slug": "serper",
+    "name": "Serper",
+    "domain": "serper.dev",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=serper.dev&sz=64",
+    "logoType": "favicon",
+    "logoFile": "serper.png"
+  },
+  {
+    "slug": "signalbase",
+    "name": "Signalbase",
+    "domain": "trysignalbase.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=trysignalbase.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "signalbase.png"
+  },
+  {
+    "slug": "sumble",
+    "name": "Sumble",
+    "domain": "sumble.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=sumble.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "sumble.png"
+  },
+  {
+    "slug": "theirstack",
+    "name": "TheirStack",
+    "domain": "theirstack.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=theirstack.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "theirstack.png"
+  },
+  {
+    "slug": "twitter",
+    "name": "Twitter",
+    "domain": "x.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=x.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "twitter.png"
+  },
+  {
+    "slug": "twitter-ads-scraper",
+    "name": "Twitter Ads Scraper",
+    "domain": "twitter.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=twitter.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "twitter-ads-scraper.png"
+  },
+  {
+    "slug": "unipile",
+    "name": "Unipile",
+    "domain": "unipile.com",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=unipile.com&sz=64",
+    "logoType": "favicon",
+    "logoFile": "unipile.png"
+  },
+  {
+    "slug": "wiza",
+    "name": "Wiza",
+    "domain": "wiza.co",
+    "sourceUrl": "https://www.google.com/s2/favicons?domain=wiza.co&sz=64",
+    "logoType": "favicon",
+    "logoFile": "wiza.png"
+  }
+]
