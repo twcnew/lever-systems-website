@@ -1,4 +1,4 @@
-# Lever — AI-native GTM engineer site
+# Lever System Website
 
 Static Next.js site (App Router) for Lever: landing page, customers index, and case studies.
 
