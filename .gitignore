@@ -47,3 +47,8 @@ next-env.d.ts
 # local-only / sensitive — never ship
 /data/
 /.restore-backup/
+
+# Local ops / client scrapes (not site)
+scripts/lina-umr-contacts/
+scripts/data/
+
