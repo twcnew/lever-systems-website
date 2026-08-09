@@ -63,9 +63,9 @@ export const REVENUE_ENGINE = {
   outputsTitle: "Routed sequence",
   routingLabel: "Routing",
   signals: [
-    { label: "Website activity", logos: ["rb2b", "vector", "snitcher"] },
+    { label: "Website activity", logos: ["rb2b", "vector"] },
     { label: "CRM data", logos: ["hubspot", "salesforce", "attio"] },
-    { label: "Market signals", logos: ["crunchbase", "apollo"] },
+    { label: "Market signals", logos: ["crunchbase", "theirstack"] },
     { label: "Hiring & job change", logos: ["linkedin", "apollo"] },
     { label: "LinkedIn engagement", logos: ["linkedin"] },
     { label: "Tech-stack change", logos: ["builtwith"] },
