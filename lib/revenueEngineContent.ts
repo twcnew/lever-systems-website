@@ -13,7 +13,7 @@ export type GtmLogo =
   | "builtwith"
   | "clay"
   | "instantly"
-  | "aircall-dark"
+  | "aircall"
   | "meta"
   | "google"
   | "google-sheets"
@@ -84,7 +84,7 @@ export const REVENUE_ENGINE = {
   outputs: [
     { n: 1, label: "Account list built", logos: ["clay"] },
     { n: 2, label: "Sequence started", logos: ["instantly", "lemlist"] },
-    { n: 3, label: "Call queue ready", logos: ["aircall-dark"] },
+    { n: 3, label: "Call queue ready", logos: ["aircall"] },
     { n: 4, label: "Ad audience synced", logos: ["linkedin", "meta", "google"] },
     { n: 5, label: "CRM task created", logos: ["hubspot"] },
     { n: 6, label: "Owner notified", logos: ["slack"] },
