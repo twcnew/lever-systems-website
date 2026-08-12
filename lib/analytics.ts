@@ -39,6 +39,7 @@ function commonProps(): AnalyticsProps {
 export function track(event: string, properties?: AnalyticsProps) {
   if (typeof window === "undefined") return;
   if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) return;
+  if (posthog.has_opted_out_capturing()) return;
   posthog.capture(event, { ...commonProps(), ...properties });
 }
 

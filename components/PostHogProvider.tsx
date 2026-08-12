@@ -9,8 +9,28 @@ import { enrichPageviewProps } from "@/lib/analytics";
 
 const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 const host = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://eu.i.posthog.com";
+const INTERNAL_FLAG = "lever_ph_internal";
 
 let didInit = false;
+
+function isInternalVisitor() {
+  if (typeof window === "undefined") return false;
+  try {
+    if (localStorage.getItem(INTERNAL_FLAG) === "1") return true;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("ph_internal") === "1") {
+      localStorage.setItem(INTERNAL_FLAG, "1");
+      return true;
+    }
+    if (params.get("ph_internal") === "0") {
+      localStorage.removeItem(INTERNAL_FLAG);
+      return false;
+    }
+  } catch {
+    /* ignore */
+  }
+  return false;
+}
 
 function PostHogPageview() {
   const pathname = usePathname();
@@ -18,6 +38,7 @@ function PostHogPageview() {
 
   useEffect(() => {
     if (!key || !pathname) return;
+    if (posthog.has_opted_out_capturing() || isInternalVisitor()) return;
     const qs = searchParams?.toString() ?? "";
     const props = enrichPageviewProps(pathname, qs);
     posthog.capture("$pageview", props);
@@ -50,7 +71,15 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
         sampleRate: 1,
       },
       loaded: (ph) => {
-        if (process.env.NODE_ENV === "development") ph.debug();
+        if (process.env.NODE_ENV === "development") {
+          ph.debug();
+          ph.opt_out_capturing();
+          return;
+        }
+        if (isInternalVisitor()) {
+          ph.register({ $internal_or_test_user: true });
+          ph.opt_out_capturing();
+        }
       },
     });
     didInit = true;
