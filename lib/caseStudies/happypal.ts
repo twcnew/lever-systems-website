@@ -22,8 +22,8 @@ export const happypalCaseStudy: CaseStudy = {
   },
   heroMetrics: [
     {
-      value: "Netflix+",
-      label: "enterprise CSE meetings at Carrefour, BNP, L'Oréal, Orange",
+      value: "Adobe+",
+      label: "enterprise CSE meetings at AWS, TotalEnergies, LEGO, BlaBlaCar",
       variant: "blue",
     },
     {
@@ -38,7 +38,7 @@ export const happypalCaseStudy: CaseStudy = {
     },
   ],
   heroQuote:
-    "We built a pipeline that books 10+ enterprise CSE meetings every week at Netflix, Carrefour, BNP Paribas, L'Oréal, and Orange.",
+    "We built a pipeline that books 10+ enterprise CSE meetings every week at Adobe, AWS, TotalEnergies, LEGO, and BlaBlaCar.",
   intro: [
     "After its Series A, HappyPal needed commercial growth toward one million users. The market is huge: every French company with 11+ employees has a CSE (works council). Finding the buyer was the blocker.",
     "A CSE elected official is an everyday employee (accountant, developer, HR assistant) elected by colleagues to manage the committee. That role doesn’t show up in Apollo, LinkedIn Sales Navigator, or ZoomInfo. Reps couldn’t buy the list.",
@@ -53,7 +53,7 @@ export const happypalCaseStudy: CaseStudy = {
     "From kickoff to delivery, the collaboration was **seamless and the work was impeccable** — I'd recommend them without hesitation.",
   proofMetric: { value: "10+", label: "qualified meetings / week" },
   impactHighlights: [
-    "Enterprise CSE meetings at **Netflix, Carrefour, BNP Paribas, L'Oréal, and Orange**",
+    "Enterprise CSE meetings at **Adobe, AWS, TotalEnergies, LEGO, BlaBlaCar, Dell, BNP Paribas, Sopra Steria, Nexity, and Groupama**",
     "**10+** qualified meetings booked every week across BDRs and AEs",
     "**41%** response rate on the automated HR & Sales referral channel, 8 to 12× cold email",
     "Full sales team fed with call-ready CSE leads, **zero manual prospecting**",
@@ -160,7 +160,7 @@ export const happypalCaseStudy: CaseStudy = {
     title: "Impact",
     titleAccent: "Impact",
     body: [
-      "The pipeline books **10+** qualified CSE meetings a week at companies like Netflix, Carrefour, BNP Paribas, L'Oréal, and Orange, and feeds BDRs and AEs without manual prospecting.",
+      "The pipeline books **10+** qualified CSE meetings a week at companies like Adobe, AWS, TotalEnergies, LEGO, and BlaBlaCar, and feeds BDRs and AEs without manual prospecting.",
       "Each elected official the system finds is a contact enrichment tools didn’t already have.",
       "Competitive mapping, AI agents, email generation, and HR/Sales referral keep that flow stocked. Referral alone replies at **41%**.",
     ],
@@ -172,8 +172,8 @@ export const happypalCaseStudy: CaseStudy = {
     },
     metrics: [
       {
-        value: "Netflix+",
-        label: "enterprise CSE meetings at Carrefour, BNP, L'Oréal, Orange",
+        value: "Adobe+",
+        label: "enterprise CSE meetings at AWS, TotalEnergies, LEGO, BlaBlaCar",
         variant: "blue",
       },
       {
@@ -196,10 +196,10 @@ export const happypalCaseStudy: CaseStudy = {
       "An always-on pipeline that books enterprise CSE meetings",
   },
   wallSnippet:
-    "10+ enterprise CSE meetings every week at Netflix, Carrefour, BNP, L'Oréal, Orange.",
+    "10+ enterprise CSE meetings every week at Adobe, AWS, TotalEnergies, LEGO, BlaBlaCar.",
   seo: {
     title: "HappyPal Case Study — Lever",
     description:
-      "How Lever helped HappyPal build a pipeline that books 10+ enterprise CSE meetings every week at Netflix, Carrefour, BNP Paribas, L'Oréal, and Orange.",
+      "How Lever helped HappyPal build a pipeline that books 10+ enterprise CSE meetings every week at Adobe, AWS, TotalEnergies, LEGO, and BlaBlaCar.",
   },
 };
