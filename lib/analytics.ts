@@ -26,11 +26,13 @@ function commonProps(): AnalyticsProps {
   const path = window.location.pathname;
   const search = window.location.search;
   const caseMatch = path.match(/^\/use-cases\/([^/]+)\/?$/);
+  const blogMatch = path.match(/^\/blog\/([^/]+)\/?$/);
   return {
     path,
     page_path: path,
     page_url: window.location.href,
     case_slug: caseMatch?.[1] ?? null,
+    blog_slug: blogMatch?.[1] ?? null,
     referrer: document.referrer || undefined,
     ...utmFromSearch(search),
   };

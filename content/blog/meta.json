@@ -1,0 +1,37 @@
+{
+  "section": {
+    "path": "/blog",
+    "navLabel": "Blog",
+    "parent": "Resources"
+  },
+  "article": {
+    "slug": "linkedin-competitive-intelligence",
+    "path": "/blog/linkedin-competitive-intelligence",
+    "title": "Always-on competitive intelligence for inbound",
+    "seoTitle": "Always-on LinkedIn competitive intelligence | Lever Systems",
+    "description": "Backfill any lookback of a competitor’s LinkedIn team, then keep the library live as they post. Angles, funnel, visuals for inbound, your team, and your agents.",
+    "ogTitle": "Always-on competitive intelligence for inbound",
+    "ogDescription": "Any duration. Live updates. A library your team and your agents actually use.",
+    "date": "2026-08-15",
+    "author": "Alexis Rodrigues",
+    "category": "Use case",
+    "tags": ["inbound", "competitive intelligence", "linkedin", "content engine"],
+    "cardKicker": "Blog",
+    "cardTitle": "Always-on competitive intelligence for inbound",
+    "cardExcerpt": "Any lookback on a competitor’s LinkedIn team. Then every new post updates the library.",
+    "cardImage": "/blog/linkedin-library.jpg"
+  },
+  "video": {
+    "required": true,
+    "placement": "after-lede",
+    "aspectRatio": "16 / 9",
+    "src": "/blog/linkedin-library.mp4",
+    "poster": "/blog/linkedin-library.jpg",
+    "caption": "The library: filter by author, date, funnel, format, visual. New posts keep landing after the first pull.",
+    "placeholderLabel": "Video: competitor LinkedIn library (walkthrough)"
+  },
+  "cta": {
+    "label": "Book a strategy call",
+    "href": "/#book"
+  }
+}

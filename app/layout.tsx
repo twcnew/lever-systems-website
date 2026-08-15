@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VercelAnalytics } from "@/components/analytics/VercelAnalytics";
 import { Caveat, Geist, Instrument_Serif } from "next/font/google";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { SITE_URL } from "@/lib/siteUrl";
@@ -91,7 +91,7 @@ export default function RootLayout({
       <body>
         <PostHogProvider>
           {children}
-          <Analytics />
+          <VercelAnalytics />
           <SpeedInsights />
         </PostHogProvider>
       </body>

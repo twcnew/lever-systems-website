@@ -22,11 +22,8 @@ export const NAV_ITEMS: NavItem[] = [
   { type: "link", label: "Solution", href: "/#solution" },
   { type: "link", label: "Proof", href: "/#proof" },
   { type: "link", label: "FAQ", href: "/#faq" },
-  {
-    type: "group",
-    label: "Resources",
-    items: [{ label: "Customers", href: "/use-cases" }],
-  },
+  { type: "link", label: "Customers", href: "/use-cases" },
+  { type: "link", label: "Blog", href: "/blog" },
 ];
 
 export const NAV_CTA = {
