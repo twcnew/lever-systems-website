@@ -18,11 +18,8 @@ export function BlogArticlePage({ article }: { article: BlogArticle }) {
 
       <main id="main" className="blog-article">
         <article className="blog-article__inner">
-          <nav className="blog-article__crumbs" aria-label="Breadcrumb">
-            <Link href="/blog">Blog</Link>
-          </nav>
           <p className="blog-article__kicker">
-            Blog
+            <Link href="/blog">Blog</Link>
             <span aria-hidden="true"> · </span>
             {article.dateLabel}
           </p>
