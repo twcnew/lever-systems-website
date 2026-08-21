@@ -57,7 +57,7 @@ export function useMidReveal<T extends Element>(
     };
 
     if (prefersReducedMotion()) {
-      settle("skip");
+      onSkipRef.current?.();
       return;
     }
 

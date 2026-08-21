@@ -38,6 +38,7 @@ export const ABOUT_CONTENT = {
     role: "AI-native GTM engineer",
     photo: "/founder/alexis.webp",
     footerPhoto: "/founder/alexis-footer.webp",
+    avatarPhoto: "/founder/alexis-avatar.png",
     linkedinUrl: "https://www.linkedin.com/in/alexis-rodrigues1/",
   },
   cta: {

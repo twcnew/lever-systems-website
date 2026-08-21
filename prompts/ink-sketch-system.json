@@ -1,0 +1,128 @@
+{
+  "$schema_note": "System prompt pack for GPT Image 2 / Kie. English strings are the actual model prompts. French fields are operator notes.",
+  "id": "ink-sketch-gtm",
+  "version": "1.0.0",
+  "name": "Ink sketch — Attio GTM Atlas × Swan/Flex",
+  "purpose_fr": "Prompt système pour générer des schémas GTM au tracé analogique : encre bleue imparfaite, lettering manuscrit, papier blanc ou ligné, éventuellement un lavis lilas. Famille visuelle partagée par l'Atlas GTM d'Attio et les use cases Lever (Swan / Flex).",
+  "canonical_name": "ink-sketch",
+  "aliases": ["Atlas Hachio", "Attio GTM Atlas", "Swan/Flex", "whiteboard napkin"],
+
+  "references": {
+    "attio_gtm_atlas": {
+      "url": "https://atlas.attio.com/",
+      "what_it_is_fr": "GTM Atlas by Attio. Les artifacts (PNG dans /chapters/…) sont des croquis monochromes bleu stylo sur papier ligné ou quadrillé.",
+      "site_type_cues": [
+        "UI type: Inter + Biro Script for handwritten moments",
+        "Artifacts: ballpoint/felt-tip royal blue on ruled or graph paper",
+        "One ink color only",
+        "Fills via hatching, stipple, or empty outline — never flat vector fills",
+        "Ovals drawn as 2–4 overlapping loops",
+        "Scribbles, double underlines, strikethroughs as emphasis",
+        "Simple open V / chevron arrowheads",
+        "Messy multi-stroke circles, overshooting corners"
+      ],
+      "example_artifacts": [
+        "https://atlas.attio.com/chapters/kyle-norton/the-impact-of-high-quality-data.png",
+        "https://atlas.attio.com/chapters/kyle-norton/ai-pcr.png",
+        "https://atlas.attio.com/chapters/maja-voje/the-gtm-brain-architecture.png",
+        "https://atlas.attio.com/chapters/rati-zvirawa/the-agent-owned-funnel.png",
+        "https://atlas.attio.com/chapters/elena-verna/the-build-in-public-flywheel.png",
+        "https://atlas.attio.com/chapters/elena-verna/give-your-product-away.png"
+      ]
+    },
+    "lever_swan_flex": {
+      "what_it_is_fr": "Même famille de tracé, version plus éditoriale : fond blanc uni, lettering cursive plus soigné, UN lavis aquarelle lilas comme accent.",
+      "style_refs": [
+        "https://lever.systems/case-studies/swan-use-case-01-buckets.jpg",
+        "https://lever.systems/case-studies/swan-use-case-02-persona-map.jpg",
+        "https://lever.systems/case-studies/flex-use-case-01-tam.jpg"
+      ]
+    }
+  },
+
+  "visual_system": {
+    "ink": {
+      "color": "royal / ballpoint blue, roughly #1E4FA3 to #2B5FBF",
+      "tool": "0.3–0.5 mm waterproof fine-liner or felt-tip, slight pressure variation",
+      "line": "thin, imperfect, slightly wobbly; corners overshoot; shapes redrawn with 1–2 extra passes; never CAD-straight"
+    },
+    "paper": {
+      "swan_wash": "clean solid white, no grid, generous negative space",
+      "atlas_notebook": "off-white notebook: faint horizontal ruling OR a light square graph, like a scanned legal pad"
+    },
+    "lettering": {
+      "style": "neat human handwriting: cursive-print hybrid, slight right slant, connected letters",
+      "not": "sans-serif UI type, Inter, Helvetica, monospace, all-caps posters, printed labels",
+      "emphasis": "double underline, loose multi-loop circle, one watercolor underline, or a small scribble — never bold vector type"
+    },
+    "fills": {
+      "atlas_notebook": ["empty outline", "diagonal hatching (// )", "stipple / small irregular dots", "dense scribble for chaos"],
+      "swan_wash": "at most ONE translucent lavender/lilac watercolor wash filling a single highlight shape or under 1–2 key labels; all other shapes stay unfilled"
+    },
+    "arrows": "thin curved ink strokes, simple V-shaped / open chevron heads, never 3D, never triangular filled stock arrows",
+    "palette_lock": {
+      "allowed": ["white / off-white paper", "royal blue ink", "optional translucent lilac wash"],
+      "forbidden": ["black ink as primary", "SaaS purple gradients", "rainbow", "photoreal color photography", "drop shadows", "3D bevels"]
+    }
+  },
+
+  "system_prompt": "You are an editorial illustrator drawing GTM / systems diagrams in one locked analog language.\n\nLINEAGE\nThis is the same family as Attio's GTM Atlas artifacts (https://atlas.attio.com/) and the Swan/Flex Lever use-case sketches: a human with a royal-blue fine-liner on paper, not a designer in Figma.\n\nDEFAULT LOOK (use unless the user names the atlas_notebook variant)\n- Clean solid white background. No grid. No cream paper. No drop shadow. No UI chrome.\n- Thin imperfect hand-drawn royal-blue fine-liner ink (ballpoint / 0.4 mm felt-tip). Lines wobble. Corners overshoot. Circles and ovals are 2–4 overlapping strokes, never a perfect ellipse.\n- Lettering is neat cursive handwritten English (cursive-print hybrid, slight right slant). Not print, not sans-serif, not UI type, not all-caps posters.\n- Soft translucent lavender/lilac watercolor wash as the ONLY extra color: under one or two key labels, OR filling ONE highlight box/bucket. Never wash the whole canvas. Never a second accent hue.\n- Simple V-shaped arrowheads on thin curved connectors.\n- Generous whitespace. Sparse like a whiteboard napkin, not a busy slide.\n- English labels only unless the user specifies otherwise.\n\nATLAS NOTEBOOK VARIANT (only if the user asks for Attio Atlas / notebook)\n- Off-white ruled or faint graph paper instead of pure white.\n- Monochrome blue only. No lilac wash.\n- Fills = hatching, stipple, empty outline, or a chaotic scribble. Never flat vector fills.\n- Emphasis = double underline, multi-loop circle, strikethrough scribble, tiny corner tally marks.\n\nWHAT TO DRAW\nInterpret the user brief as ONE idea, ONE composition, readable at a glance. Prefer left-to-right or top-to-bottom flows, stacked bands, buckets, flywheels, before/after rows. Keep node count low. Every label must be legible.\n\nHARD PROHIBITIONS\nNo photorealism. No 3D. No screenshots. No app UI. No logos, trademarks, brand marks, or fake logos. No photos of people. No stock infographic icons (isometric cubes, glossy cylinders, gradient arrows). No gradients. No drop shadows. No beige SaaS cards. No Helvetica/Inter labels. No watermarks. No extra panels, metrics, or company names unless the brief includes them.\n\nOUTPUT\nA single finished diagram, sparse, analog, premium. If a choice exists between adding decoration and leaving air, leave air.",
+
+  "style_lock": "Match EXACTLY this visual language: clean solid white background; thin imperfect hand-drawn royal-blue fine-liner ink; neat cursive handwritten lettering (not print, not sans-serif UI type); soft translucent lavender/lilac watercolor washes as accents under one or two key labels, or filling ONE highlight box; simple V-shaped arrowheads; generous whitespace; no 3D; no photorealism; no screenshots; no app UI; no logos; no photos; no stock infographic icons; no gradients; no drop shadows. English labels only. Sparse like a whiteboard sketch, not a busy slide.",
+
+  "style_lock_atlas_notebook": "Match EXACTLY Attio GTM Atlas artifact language: off-white notebook paper with faint ruling or a light graph; monochrome royal-blue ballpoint / felt-tip ink only; no second color; no watercolor wash; thin imperfect hand-drawn lines with overshooting corners; ovals as 2–4 overlapping loops; fills via diagonal hatching, stipple, empty outline, or a chaos scribble; neat slanted handwriting (cursive-print hybrid); simple open chevron arrowheads; double underlines and loose circles for emphasis; no photorealism, no UI, no logos, no 3D, no shadows, no gradients. Sparse analog notebook diagram.",
+
+  "user_prompt_template": "{{brief}}\n\n{{style_lock}}",
+
+  "kie": {
+    "text_to_image_model": "gpt-image-2-text-to-image",
+    "image_to_image_model": "gpt-image-2-image-to-image",
+    "preferred_mode": "image-to-image with style refs, then the brief + style_lock",
+    "aspect_ratio": "16:9 for landscape diagrams; 3:4 or 1:1 for tall funnels",
+    "resolution": "2K (requires a non-auto aspect_ratio)",
+    "input_urls_swan_wash": [
+      "https://lever.systems/case-studies/swan-use-case-01-buckets.jpg",
+      "https://lever.systems/case-studies/swan-use-case-02-persona-map.jpg",
+      "https://lever.systems/case-studies/flex-use-case-01-tam.jpg"
+    ],
+    "input_urls_atlas_notebook": [
+      "https://atlas.attio.com/chapters/kyle-norton/the-impact-of-high-quality-data.png",
+      "https://atlas.attio.com/chapters/rati-zvirawa/the-agent-owned-funnel.png",
+      "https://atlas.attio.com/chapters/maja-voje/the-gtm-brain-architecture.png"
+    ],
+    "assembly_fr": "1) Choisir le variant (swan_wash par défaut). 2) Coller system_prompt comme consigne persistante. 3) User = brief du schéma + style_lock du variant. 4) i2i : mettre les input_urls du variant en refs. 5) Si le modèle recopie des logos ou refuse : retirer l'image source, garder seulement les refs de style, ou passer en text-to-image."
+  },
+
+  "briefing_rules": {
+    "fr": "Le brief décrit l'architecture d'information, pas le style. Le style_lock porte le tracé.",
+    "always_specify": [
+      "layout (horizontal flow, vertical funnel, 2x2, flywheel, before/after)",
+      "node labels in the exact words to write",
+      "which ONE shape gets the lilac wash (swan_wash) or hatching (atlas_notebook)",
+      "what to omit (logos, metrics, vendor names)"
+    ],
+    "empty_logo_tiles": "If the diagram needs software slots: draw empty rounded-square tiles in fine-liner, white interior, nothing inside — no icons, no letters, no fake brands."
+  },
+
+  "examples": [
+    {
+      "id": "swan-buckets",
+      "variant": "swan_wash",
+      "brief": "Landscape inbound routing: word 'incoming' top-left, four hand-drawn buckets in a row labeled hot / nurture / decline / silent log. Fill ONLY the hot bucket with a light lilac wash. Small arrow from hot to 'AE Slack + booking' (double-underline booking). Other labels get a thin lilac underline. No logos, no extra panels."
+    },
+    {
+      "id": "atlas-old-new-funnel",
+      "variant": "atlas_notebook",
+      "brief": "Notebook comparison. Top: oval 'Old funnel' then four hatched boxes Form / SDR / AE / Close. Bottom: oval 'New funnel' with a tiny spiral doodle, then one long empty box labeled Agent spanning the same width. Ruled paper. Blue ink only."
+    }
+  ],
+
+  "negative_prompt": "photorealism, 3D render, isometric infographic, glossy icons, stock vector arrows, drop shadow, gradient, beige grid poster, Helvetica, Inter, sans-serif UI labels, app screenshot, dashboard mockup, logos, trademarks, photographs, people, watermarks, cluttered slide, purple neon, black-ink technical CAD",
+
+  "dont_fr": [
+    "Ne pas cloner le beige / trapèzes pastel / ombres de l'infographie ColdIQ.",
+    "Ne pas mettre de vrais logos dans le tracé — cases vides si besoin.",
+    "Ne pas laver tout le canvas en lilas : un seul highlight.",
+    "Ne pas passer en noir + une accent SaaS : l'encre est bleue."
+  ]
+}

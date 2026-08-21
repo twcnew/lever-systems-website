@@ -19,6 +19,7 @@ type FounderNameInkProps = {
   className?: string;
   timing?: "mid" | "early";
   size?: "default" | "footer";
+  instant?: boolean;
 };
 
 export function FounderNameInk({
@@ -26,14 +27,17 @@ export function FounderNameInk({
   className = "",
   timing = "mid",
   size = "default",
+  instant = false,
 }: FounderNameInkProps) {
   const rootRef = useRef<HTMLSpanElement>(null);
-  const settledRef = useRef(false);
-  const completeRef = useRef(false);
+  const settledRef = useRef(instant);
+  const completeRef = useRef(instant);
 
-  const [playing, setPlaying] = useState(false);
-  const [instantComplete, setInstantComplete] = useState(false);
-  const [phase, setPhase] = useState<"pending" | "writing" | "complete">("pending");
+  const [playing, setPlaying] = useState(instant);
+  const [instantComplete, setInstantComplete] = useState(instant);
+  const [phase, setPhase] = useState<"pending" | "writing" | "complete">(
+    instant ? "complete" : "pending",
+  );
 
   const totalDuration = useMemo(
     () => computeTimeline(name, caveat).totalDuration,
@@ -75,6 +79,7 @@ export function FounderNameInk({
   skipToEndRef.current = skipToEnd;
 
   useMidReveal(rootRef, {
+    enabled: !instant,
     timing,
     onReveal: () => startWritingRef.current(),
     onSkip: () => skipToEndRef.current(),
