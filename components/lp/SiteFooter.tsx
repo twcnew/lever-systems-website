@@ -1,6 +1,5 @@
 "use client";
 
-import { FormEvent, useState } from "react";
 import { Brand } from "../icons";
 import { InkAnnotate } from "../system/InkAnnotate";
 import { FounderNameInk } from "../system/FounderNameInk";
@@ -15,13 +14,6 @@ function socialNetwork(label: string): "linkedin" | "x" {
 
 export function SiteFooter() {
   const { founder } = ABOUT_CONTENT;
-  const [subscribeNote, setSubscribeNote] = useState("");
-
-  const handleSubscribe = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    track("newsletter_submit_attempted", { location: "footer" });
-    setSubscribeNote(FOOTER_CONTENT.subscribe.comingSoon);
-  };
 
   return (
     <footer className="site-footer" aria-label="Site footer">
@@ -30,31 +22,22 @@ export function SiteFooter() {
           <p className="site-footer__subscribe-label">
             {FOOTER_CONTENT.subscribe.label}
           </p>
-          <form
-            className="site-footer__subscribe-form"
-            data-newsletter-form
-            onSubmit={handleSubscribe}
+          <a
+            className="site-footer__subscribe-link"
+            href={FOOTER_CONTENT.subscribe.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() =>
+              track("social_outbound_clicked", {
+                network: "linkedin",
+                location: "footer_notes",
+                href: FOOTER_CONTENT.subscribe.href,
+              })
+            }
           >
-            <label className="site-footer__sr-only" htmlFor="footer-email">
-              Email address
-            </label>
-            <input
-              id="footer-email"
-              className="site-footer__email-input"
-              type="email"
-              name="email"
-              autoComplete="email"
-              placeholder={FOOTER_CONTENT.subscribe.placeholder}
-            />
-            <button className="site-footer__email-submit" type="submit">
-              Join
-            </button>
-            {subscribeNote ? (
-              <p className="site-footer__subscribe-note" aria-live="polite">
-                {subscribeNote}
-              </p>
-            ) : null}
-          </form>
+            {FOOTER_CONTENT.subscribe.cta}
+            <span aria-hidden="true"> ↗</span>
+          </a>
         </div>
         <div className="site-footer__author">
           <p className="site-footer__author-label">{FOOTER_CONTENT.author.label}</p>

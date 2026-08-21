@@ -11548,67 +11548,27 @@ html.blog-page .blog-article .lp--clay {
   color: rgba(14, 10, 7, 0.62);
 }
 
-.site-footer__subscribe-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  min-width: min(100%, 280px);
-}
-
-.site-footer__email-input {
-  width: min(100%, 280px);
-  padding: 0 0 8px;
-  border: 0;
+.site-footer__subscribe-link {
+  padding: 0 0 6px;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
-  background: transparent;
-  font-family: var(--font-sans);
-  font-size: clamp(11px, 1vw, 13px);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-align: right;
-  color: var(--ink);
-  outline: none;
-}
-
-.site-footer__email-input::placeholder {
-  color: rgba(14, 10, 7, 0.34);
-}
-
-.site-footer__email-input:focus-visible {
-  border-bottom-color: var(--royal);
-}
-
-.site-footer__email-submit {
-  padding: 0;
-  border: 0;
-  background: transparent;
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(14, 10, 7, 0.42);
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.site-footer__email-submit:hover {
+.site-footer__subscribe-link:hover {
   color: var(--royal);
+  border-bottom-color: var(--royal);
 }
 
-.site-footer__email-submit:focus-visible {
+.site-footer__subscribe-link:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--royal) 40%, transparent);
   outline-offset: 3px;
   border-radius: 2px;
-}
-
-.site-footer__subscribe-note {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(14, 10, 7, 0.48);
 }
 
 /* Bande 2 — author panel */
@@ -11834,16 +11794,8 @@ html.blog-page .blog-article .lp--clay {
     align-items: flex-start;
   }
 
-  .site-footer__subscribe-form,
-  .site-footer__email-input {
-    width: 100%;
-    align-items: stretch;
-    text-align: left;
-  }
-
-  .site-footer__email-submit {
+  .site-footer__subscribe-link {
     align-self: flex-start;
-    text-align: left;
   }
 
   .site-footer__author-panel {
@@ -12074,4 +12026,3 @@ html.blog-page .blog-article .lp--clay {
     font-size: 14px;
   }
 }
-

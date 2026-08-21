@@ -1,8 +1,8 @@
 export const FOOTER_CONTENT = {
   subscribe: {
-    label: "Subscribe for GTM system notes and playbook updates.",
-    placeholder: "you@company.com",
-    comingSoon: "Newsletter coming soon.",
+    label: "Follow the latest GTM system notes and playbook updates.",
+    cta: "Read on LinkedIn",
+    href: "https://www.linkedin.com/in/alexis-rodrigues1/",
   },
   author: {
     label: "Built by",

@@ -16,6 +16,7 @@ export function ClosingCalEmbed() {
   useEffect(() => {
     let cancelled = false;
     const firedReady = { link: false, booker: false };
+    let firedBookingSuccessful = false;
 
     (async () => {
       const cal = await getCalApi({ namespace });
@@ -63,6 +64,8 @@ export function ClosingCalEmbed() {
             type === "bookingSuccessful" ||
             type === "bookingSuccessfulV2"
           ) {
+            if (firedBookingSuccessful) return;
+            firedBookingSuccessful = true;
             trackCal("cal_booking_successful", {
               cal_event: type,
             });
