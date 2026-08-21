@@ -1,4 +1,5 @@
 const { existsSync } = require("node:fs");
+const { tmpdir } = require("node:os");
 const { join } = require("node:path");
 const { createRequire } = require("node:module");
 
@@ -17,7 +18,7 @@ const sharp = require("sharp");
 
 const ROOT = join(__dirname, "..");
 const OUT_PNG = join(ROOT, "public", "studio", "pyramid.png");
-const RAW_PNG = join(ROOT, "exports", "_pyramid-thumb-raw.png");
+const RAW_PNG = join(tmpdir(), "lever-pyramid-thumb-raw.png");
 const PAGE_URL = process.env.PYRAMID_URL ?? "http://localhost:3001/studio/pyramid/";
 // 720px wide yields a near-4:5 poster; pad to exact 4:5 for the gallery card.
 const WIDTH = Number(process.env.PYRAMID_WIDTH) || 720;
@@ -30,6 +31,8 @@ async function main() {
     viewport: { width: 1200, height: 1600 },
     deviceScaleFactor: 1,
   });
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
 
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
   await page.addStyleTag({
@@ -45,12 +48,6 @@ async function main() {
         display: none !important;
       }
       body { background: #050403 !important; }
-      .pyramid-glass__band.is-active {
-        border-color: rgba(255, 255, 255, 0.28) !important;
-        background: rgba(255, 255, 255, 0.1) !important;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22),
-          0 18px 40px rgba(0, 0, 0, 0.28) !important;
-      }
     `,
   });
 

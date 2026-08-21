@@ -11,9 +11,12 @@ export type PyramidLayer = {
   items: PyramidItem[];
 };
 
-export type PyramidRule = {
-  rule: string;
-  sub: string;
+export type PyramidSideNote = {
+  id: string;
+  side: "left" | "right";
+  eyebrow: string;
+  title: string;
+  copy: string;
 };
 
 export const PYRAMID_TITLE = "The GTM Pyramid";
@@ -23,6 +26,37 @@ export const PYRAMID_KICKER =
 export const PYRAMID_KICKER_ACCENT = "predictable pipeline";
 
 export const PYRAMID_APEX = "Predictable pipeline";
+
+export const PYRAMID_SIDE_NOTES: PyramidSideNote[] = [
+  {
+    id: "earn-scale",
+    side: "left",
+    eyebrow: "Start here",
+    title: "Earn the right to scale",
+    copy: "If the offer and customer language are weak, more reach only compounds noise.",
+  },
+  {
+    id: "live-signals",
+    side: "left",
+    eyebrow: "Input",
+    title: "Use live signals",
+    copy: "Let a real hiring, funding or engagement signal make the first line specific.",
+  },
+  {
+    id: "channels-reinforce",
+    side: "right",
+    eyebrow: "System",
+    title: "Make channels reinforce",
+    copy: "Content warms demand, ads remind and outbound converts it into a conversation.",
+  },
+  {
+    id: "weekly-revenue",
+    side: "right",
+    eyebrow: "Loop",
+    title: "Review revenue weekly",
+    copy: "Follow the signal through pipeline and closed revenue, then update the next pass.",
+  },
+];
 
 export const PYRAMID_CTA = "If pipeline feels random, start at layer 1.";
 export const PYRAMID_CTA_ACCENT = "start at layer 1.";
@@ -88,7 +122,7 @@ export const PYRAMID_LAYERS: PyramidLayer[] = [
     items: [
       {
         title: "Compound the content",
-        desc: "~100 inbound meetings/month, $0 ads. A year of daily reps built that. One viral post never could.",
+        desc: "One asset feeds content, retargeting, outbound proof and sales enablement. Repetition makes it compound.",
       },
       {
         title: "Retarget your readers",
@@ -128,18 +162,4 @@ export const PYRAMID_LAYERS: PyramidLayer[] = [
       },
     ],
   },
-];
-
-export const PYRAMID_LEFT: PyramidRule[] = [
-  { rule: "Signal over volume", sub: "relevance beats reach, every time" },
-  { rule: "Warm over cold", sub: "they raised their hand first" },
-  { rule: "Proof over opinion", sub: "show the work, not the talk" },
-  { rule: "Distribution over product", sub: "the audience wins in the AI era" },
-];
-
-export const PYRAMID_RIGHT: PyramidRule[] = [
-  { rule: "Systems, not tactics", sub: "tactics peak, systems compound" },
-  { rule: "Compound, don't campaign", sub: "one asset, many users, many months" },
-  { rule: "Revenue, not meetings", sub: "every other metric inflates" },
-  { rule: "Their words, not yours", sub: "use customer verbatim, not your deck" },
 ];

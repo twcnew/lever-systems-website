@@ -28,7 +28,7 @@ export default function PyramidStudioRoute() {
             </p>
           </header>
 
-          <div className="studio-spine__stage">
+          <div className="studio-spine__stage studio-spine__stage--pyramid">
             <div className="studio-spine__poster studio-spine__poster--modern">
               <GtmPyramidAsset />
             </div>
