@@ -58,10 +58,11 @@ const TEMPLATES: Template[] = [
   {
     href: "/studio/flywheel",
     thumb: "/studio/flywheel.png",
-    thumbAlt: "GTM Flywheel — content, ads, outbound on one ICP",
-    title: "GTM Flywheel",
+    thumbAlt:
+      "How Pipeline Multiplies — content, ads and outbound compounding on one ICP",
+    title: "Pipeline Multiplies",
     description:
-      "Content, ads, outbound on one ICP. Each channel makes the others stronger.",
+      "Content, ads and outbound aligned on one ICP. Three coordinated channels turn isolated touches into a compounding GTM flywheel.",
     tag: "Liquid glass",
   },
   {

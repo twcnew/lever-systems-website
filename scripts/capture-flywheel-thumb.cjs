@@ -1,6 +1,7 @@
 const { existsSync } = require("node:fs");
 const { join } = require("node:path");
 const { createRequire } = require("node:module");
+const { tmpdir } = require("node:os");
 
 function loadPlaywright() {
   const candidates = [
@@ -17,7 +18,7 @@ const sharp = require("sharp");
 
 const ROOT = join(__dirname, "..");
 const OUT_PNG = join(ROOT, "public", "studio", "flywheel.png");
-const RAW_PNG = join(ROOT, "exports", "_flywheel-thumb-raw.png");
+const RAW_PNG = join(tmpdir(), "lever-flywheel-thumb-raw.png");
 const PAGE_URL = process.env.FLYWHEEL_URL ?? "http://localhost:3001/studio/flywheel/";
 const WIDTH = Number(process.env.FLYWHEEL_WIDTH) || 720;
 const TARGET_W = WIDTH;
@@ -29,6 +30,7 @@ async function main() {
     viewport: { width: 1200, height: 1600 },
     deviceScaleFactor: 1,
   });
+  await page.emulateMedia({ reducedMotion: "reduce" });
 
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
   await page.addStyleTag({
