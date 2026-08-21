@@ -2926,6 +2926,12 @@ html.fp-on body {
     transform: none !important;
     box-shadow: none;
   }
+  /* Keep the hero stable while mobile browser chrome expands/collapses.
+     The more-specific no-cinema rule above otherwise forces 100dvh here,
+     which resizes the shader canvas on the first scroll. */
+  html.no-cinema .stage {
+    height: 100svh;
+  }
   .hero {
     justify-content: center;
     padding: clamp(88px, 14vh, 112px) 16px clamp(24px, 5vh, 40px);
