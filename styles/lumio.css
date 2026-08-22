@@ -19955,3 +19955,478 @@ html:has(.studio-spine) body {
     sepia(0.18) saturate(1.08)
     drop-shadow(0 1.1cqw 2.4cqw rgba(0, 0, 0, 0.48));
 }
+/* ============================================================
+   How Pricing Shifts GTM — 19-company pricing model poster
+   ============================================================ */
+
+.studio-spine__stage--pricing-shifts {
+  max-width: 960px;
+}
+
+.pricing-shifts {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  container-type: inline-size;
+  color: #f4f6fb;
+  background:
+    radial-gradient(ellipse 76% 35% at 9% 2%, rgba(90, 139, 228, 0.48), transparent 66%),
+    radial-gradient(ellipse 62% 48% at 91% 53%, rgba(84, 164, 255, 0.16), transparent 72%),
+    radial-gradient(ellipse 72% 43% at 42% 75%, rgba(102, 91, 208, 0.16), transparent 76%),
+    #050403;
+}
+
+.pricing-shifts .spine-glass__aurora {
+  inset: -18% -12% 0;
+  opacity: 0.62;
+}
+
+.pricing-shifts__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgba(132, 171, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(132, 171, 238, 0.06) 1px, transparent 1px);
+  background-size: 10cqw 10cqw;
+  mask-image: radial-gradient(ellipse 92% 88% at 50% 45%, #000 38%, transparent 96%);
+}
+
+.pricing-shifts .spine-glass__grain {
+  opacity: 0.29;
+}
+
+.pricing-shifts .spine-glass__topbar {
+  position: absolute;
+  top: 3cqw;
+  left: 50%;
+  z-index: 6;
+  width: max-content;
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.pricing-shifts .spine-glass__byline {
+  gap: 0.92cqw;
+  max-width: 61cqw;
+  padding: 0.43cqw 1.45cqw 0.43cqw 0.43cqw;
+  background: rgba(10, 15, 31, 0.48);
+}
+
+.pricing-shifts .spine-glass__avatar {
+  width: 3.8cqw;
+  height: 3.8cqw;
+}
+
+.pricing-shifts .spine-glass__name,
+.pricing-shifts .spine-glass__dot {
+  font-size: 1.38cqw;
+}
+
+.pricing-shifts .spine-glass__role {
+  font-size: 1.27cqw;
+}
+
+.pricing-shifts .spine-glass__wordmark {
+  width: 5.1cqw;
+  margin-left: 0.3cqw;
+}
+
+.pricing-shifts .spine-glass__url {
+  top: 1.55cqw;
+  left: 2cqw;
+  font-size: 1.08cqw;
+}
+
+.pricing-shifts__hero {
+  position: absolute;
+  top: 9.5cqw;
+  left: 5cqw;
+  z-index: 4;
+  width: 72cqw;
+  text-align: left;
+}
+
+.pricing-shifts__title {
+  max-width: 68cqw;
+  margin: 0;
+  font-size: 5.35cqw;
+  font-weight: 500;
+  letter-spacing: -0.052em;
+  line-height: 0.98;
+  color: #fff;
+}
+
+.pricing-shifts__title .pricing-shifts__accent {
+  display: block;
+  width: max-content;
+  margin-top: 0.25cqw;
+  font-weight: 390;
+}
+
+.pricing-shifts__kicker {
+  display: flex;
+  align-items: center;
+  width: 74cqw;
+  min-height: 3.65cqw;
+  margin: 1.2cqw 0 0;
+  padding: 0.55cqw 1.55cqw;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  font-size: 1.55cqw;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  color: rgba(244, 246, 251, 0.78);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(1.4cqw);
+  -webkit-backdrop-filter: blur(1.4cqw);
+}
+
+.pricing-shifts__kicker .pricing-shifts__accent {
+  margin-right: 0.45ch;
+  color: #d7e4ff;
+  font-weight: 720;
+}
+
+.pricing-shifts__accent {
+  color: #aac8ff;
+  background-image: linear-gradient(90deg, transparent, rgba(120, 170, 255, 0.95), transparent);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.22cqw;
+}
+
+.pricing-shifts__tiles {
+  position: absolute;
+  top: 8.9cqw;
+  right: -3.1cqw;
+  z-index: 2;
+  width: 30cqw;
+  height: 14cqw;
+  pointer-events: none;
+  opacity: 0.66;
+  transform: rotate(-14deg);
+}
+
+.pricing-shifts__tiles span {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 7.2cqw;
+  height: 7.2cqw;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  border-radius: 2cqw;
+  font-size: 3.4cqw;
+  font-weight: 700;
+  color: rgba(239, 246, 255, 0.9);
+  background:
+    linear-gradient(145deg, rgba(126, 178, 255, 0.82), rgba(70, 98, 198, 0.5));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    0 1.4cqw 2.8cqw rgba(0, 0, 0, 0.34),
+    0 0 2.4cqw rgba(90, 139, 228, 0.18);
+}
+
+.pricing-shifts__tiles span:nth-child(1) { top: 0; left: 0; }
+.pricing-shifts__tiles span:nth-child(2) { top: 4.5cqw; left: 6.2cqw; }
+.pricing-shifts__tiles span:nth-child(3) { top: -1.4cqw; left: 12.4cqw; }
+.pricing-shifts__tiles span:nth-child(4) { top: 3.1cqw; left: 18.7cqw; }
+
+.pricing-shifts__models {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.pricing-shifts__section {
+  position: absolute;
+  left: 4.5cqw;
+  width: 91cqw;
+}
+
+.pricing-shifts__section--outcome { top: 28cqw; }
+.pricing-shifts__section--usage { top: 51cqw; }
+.pricing-shifts__section--hybrid { top: 89.3cqw; }
+
+.pricing-shifts__section-head {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 3.65cqw;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.pricing-shifts__section-label {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin: 0;
+  padding: 0 1.8cqw;
+  border-radius: 999px;
+  font-size: 1.35cqw;
+  font-weight: 760;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pricing-shifts__section-description {
+  margin: 0;
+  padding: 0 1.7cqw 0 1.25cqw;
+  font-size: 1.38cqw;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(244, 246, 251, 0.76);
+  white-space: nowrap;
+}
+
+.pricing-shifts__section--outcome .pricing-shifts__section-head {
+  border-color: rgba(108, 164, 255, 0.28);
+}
+
+.pricing-shifts__section--outcome .pricing-shifts__section-label {
+  background: linear-gradient(90deg, rgba(84, 164, 255, 0.72), rgba(90, 139, 228, 0.56));
+}
+
+.pricing-shifts__section--usage .pricing-shifts__section-head {
+  border-color: rgba(145, 128, 255, 0.3);
+}
+
+.pricing-shifts__section--usage .pricing-shifts__section-label {
+  background: linear-gradient(90deg, rgba(102, 91, 208, 0.76), rgba(124, 88, 210, 0.58));
+}
+
+.pricing-shifts__section--hybrid .pricing-shifts__section-head {
+  border-color: rgba(91, 191, 241, 0.3);
+}
+
+.pricing-shifts__section--hybrid .pricing-shifts__section-label {
+  background: linear-gradient(90deg, rgba(65, 151, 218, 0.75), rgba(84, 164, 255, 0.56));
+}
+
+.pricing-shifts__companies {
+  position: absolute;
+  top: 4.75cqw;
+  left: 0;
+  display: grid;
+  width: 100%;
+  gap: 1.05cqw;
+}
+
+.pricing-shifts__section--outcome .pricing-shifts__companies--primary,
+.pricing-shifts__section--usage .pricing-shifts__companies--primary {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.pricing-shifts__section--hybrid .pricing-shifts__companies--primary {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.72cqw;
+}
+
+.pricing-shifts__section--usage .pricing-shifts__companies--secondary {
+  top: 20.15cqw;
+  left: 31.85cqw;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 35.9cqw;
+}
+
+.pricing-shifts__company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 14.4cqw;
+  padding: 2.05cqw 1.05cqw 1.05cqw;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 1.55cqw;
+  text-align: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    0 1.2cqw 3cqw rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(1.6cqw) saturate(1.16);
+  -webkit-backdrop-filter: blur(1.6cqw) saturate(1.16);
+}
+
+.pricing-shifts__company--outcome {
+  background: linear-gradient(160deg, rgba(84, 164, 255, 0.24), rgba(37, 76, 145, 0.15));
+}
+
+.pricing-shifts__company--usage {
+  background: linear-gradient(160deg, rgba(102, 91, 208, 0.24), rgba(74, 48, 133, 0.15));
+}
+
+.pricing-shifts__company--hybrid {
+  height: 15.6cqw;
+  padding-inline: 0.65cqw;
+  background: linear-gradient(160deg, rgba(84, 164, 255, 0.2), rgba(41, 113, 153, 0.14));
+}
+
+.pricing-shifts__logo {
+  display: grid;
+  place-items: center;
+  width: 4.9cqw;
+  height: 4.9cqw;
+  margin-bottom: 1.25cqw;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 1.25cqw;
+  font-size: 2.3cqw;
+  font-weight: 820;
+  letter-spacing: -0.08em;
+  line-height: 1;
+  color: #15223b;
+  background: rgba(249, 252, 255, 0.96);
+  box-shadow:
+    0.45cqw 0.55cqw 0 rgba(90, 139, 228, 0.34),
+    0 0.7cqw 1.7cqw rgba(0, 0, 0, 0.18);
+}
+
+.pricing-shifts__company--hybrid .pricing-shifts__logo {
+  width: 4.35cqw;
+  height: 4.35cqw;
+  margin-bottom: 1.05cqw;
+  font-size: 1.85cqw;
+}
+
+.pricing-shifts__logo--harvey,
+.pricing-shifts__logo--kittl {
+  font-family: Georgia, serif;
+  font-size: 2.7cqw;
+}
+
+.pricing-shifts__logo--intercom { color: #207dd7; }
+.pricing-shifts__logo--zendesk { color: #0b5252; }
+.pricing-shifts__logo--sierra { color: #245f58; }
+.pricing-shifts__logo--salesforce { color: #0a97d5; }
+.pricing-shifts__logo--openai { color: #111; }
+.pricing-shifts__logo--11x { font-size: 1.55cqw; letter-spacing: -0.05em; }
+.pricing-shifts__logo--zapier { color: #ff4f00; }
+.pricing-shifts__logo--elevenlabs { color: #111; letter-spacing: 0.04em; }
+.pricing-shifts__logo--bland { color: #765be7; font-size: 3.2cqw; }
+.pricing-shifts__logo--clay { color: #e773a8; }
+.pricing-shifts__logo--unify { color: #272d45; }
+.pricing-shifts__logo--relay { color: #5575e8; }
+.pricing-shifts__logo--relevance { color: #765be7; }
+.pricing-shifts__logo--aisdr { color: #6450ef; font-size: 1.15cqw; letter-spacing: -0.04em; }
+
+.pricing-shifts__logo--microsoft {
+  grid-template-columns: repeat(2, 1.1cqw);
+  grid-template-rows: repeat(2, 1.1cqw);
+  gap: 0.18cqw;
+}
+
+.pricing-shifts__logo--microsoft i:nth-child(1) { background: #f25022; }
+.pricing-shifts__logo--microsoft i:nth-child(2) { background: #7fba00; }
+.pricing-shifts__logo--microsoft i:nth-child(3) { background: #00a4ef; }
+.pricing-shifts__logo--microsoft i:nth-child(4) { background: #ffb900; }
+
+.pricing-shifts__logo--microsoft i {
+  display: block;
+  width: 1.1cqw;
+  height: 1.1cqw;
+}
+
+.pricing-shifts__logo--monday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.23cqw;
+}
+
+.pricing-shifts__logo--monday i {
+  display: block;
+  width: 0.72cqw;
+  height: 2.05cqw;
+  border-radius: 999px;
+  transform: rotate(38deg);
+}
+
+.pricing-shifts__logo--monday i:nth-child(1) { background: #f62b54; }
+.pricing-shifts__logo--monday i:nth-child(2) { background: #ffcb00; }
+.pricing-shifts__logo--monday i:nth-child(3) { background: #00c875; }
+
+.pricing-shifts__company-name {
+  margin: 0 0 0.48cqw;
+  font-size: 1.3cqw;
+  font-weight: 720;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pricing-shifts__company-pricing {
+  max-width: 100%;
+  margin: 0;
+  font-size: 1.06cqw;
+  font-weight: 470;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: rgba(244, 246, 251, 0.68);
+  text-wrap: balance;
+}
+
+.pricing-shifts__company--hybrid .pricing-shifts__company-name {
+  font-size: 1.13cqw;
+}
+
+.pricing-shifts__company--hybrid .pricing-shifts__company-pricing {
+  font-size: 0.91cqw;
+  line-height: 1.13;
+}
+
+.pricing-shifts__closer {
+  position: absolute;
+  left: 50%;
+  bottom: 2.4cqw;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1cqw;
+  width: 58cqw;
+  min-height: 4.7cqw;
+  padding: 0.55cqw 2.1cqw;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+  font-size: 1.38cqw;
+  font-weight: 520;
+  letter-spacing: -0.018em;
+  color: rgba(244, 246, 251, 0.9);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.11),
+    0 1cqw 3cqw rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(1.6cqw);
+  -webkit-backdrop-filter: blur(1.6cqw);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.pricing-shifts__closer-stars {
+  font-size: 1.45cqw;
+  letter-spacing: -0.32em;
+  color: rgba(130, 181, 255, 0.82);
+  filter: drop-shadow(0 0 0.6cqw rgba(90, 139, 228, 0.55));
+}
+
+.pricing-shifts .spine-glass__bust-corner {
+  right: 0.8cqw;
+  bottom: 0;
+  width: auto;
+  height: 13.7cqw;
+  max-width: 15.8cqw;
+  object-position: right bottom;
+}

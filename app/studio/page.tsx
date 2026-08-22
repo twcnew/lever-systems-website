@@ -76,6 +76,16 @@ const TEMPLATES: Template[] = [
     tag: "Liquid glass",
   },
   {
+    href: "/studio/pricing-shifts",
+    thumb: "/studio/pricing-shifts.png",
+    thumbAlt:
+      "How Pricing Shifts GTM — outcome, usage and hybrid pricing models",
+    title: "How Pricing Shifts GTM",
+    description:
+      "Nineteen companies moving beyond seat-based pricing — and the GTM motion each model creates.",
+    tag: "Liquid glass",
+  },
+  {
     href: "/studio/iceberg",
     thumb: "/studio/iceberg.png",
     thumbAlt: "GTM Iceberg — tip above the waterline, systems below",
