@@ -17,6 +17,16 @@ export type SignalRing = {
   groups: SignalGroup[];
 };
 
+export type SignalsMapConfig = {
+  title: string;
+  titleAccent?: string;
+  kicker: string;
+  kickerAccent?: string;
+  rule: string;
+  hub: Pick<SignalTool, "label" | "src">;
+  rings: SignalRing[];
+};
+
 export const SIGNALS_TITLE = "2026 Signal Map";
 export const SIGNALS_TITLE_ACCENT = "2026 Signal Map";
 export const SIGNALS_KICKER = "First, second, third — the three layers of buyer intent";
@@ -277,3 +287,13 @@ export const SIGNALS_RINGS: SignalRing[] = [
     ],
   },
 ];
+
+export const DEFAULT_SIGNALS_MAP: SignalsMapConfig = {
+  title: SIGNALS_TITLE,
+  titleAccent: SIGNALS_TITLE_ACCENT,
+  kicker: SIGNALS_KICKER,
+  kickerAccent: SIGNALS_KICKER_ACCENT,
+  rule: SIGNALS_RULE,
+  hub: SIGNALS_HUB,
+  rings: SIGNALS_RINGS,
+};

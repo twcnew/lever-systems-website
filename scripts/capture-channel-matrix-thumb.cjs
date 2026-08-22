@@ -17,11 +17,12 @@ const { chromium } = loadPlaywright();
 const sharp = require("sharp");
 
 const ROOT = join(__dirname, "..");
-const OUT_PNG = join(ROOT, "public", "studio", "flywheel.png");
-const RAW_PNG = join(tmpdir(), "lever-flywheel-thumb-raw.png");
-const PAGE_URL = process.env.FLYWHEEL_URL ?? "http://localhost:3001/studio/flywheel/";
-const WIDTH = Number(process.env.FLYWHEEL_WIDTH) || 720;
-const TARGET_W = WIDTH;
+const OUT_PNG = join(ROOT, "public", "studio", "channel-matrix.png");
+const RAW_PNG = join(tmpdir(), "lever-channel-matrix-thumb-raw.png");
+const PAGE_URL =
+  process.env.CHANNEL_MATRIX_URL ??
+  "http://localhost:3001/studio/channel-matrix/";
+const TARGET_W = Number(process.env.CHANNEL_MATRIX_WIDTH) || 720;
 const TARGET_H = Math.round(TARGET_W / 0.8);
 
 async function main() {
@@ -36,9 +37,9 @@ async function main() {
   await page.addStyleTag({
     content: `
       .studio-spine__stage { max-width: none !important; padding: 0 !important; }
-      .studio-spine__poster--modern {
+      .studio-spine__poster--channel-matrix-dark {
         display: block !important;
-        width: ${WIDTH}px !important;
+        width: ${TARGET_W}px !important;
         border: 0 !important;
         margin: 0 !important;
       }
@@ -49,15 +50,10 @@ async function main() {
     `,
   });
 
-  const poster = page.locator(".studio-spine__poster--flywheel-light");
+  const poster = page.locator(".studio-spine__poster--channel-matrix-dark");
   await poster.waitFor({ state: "visible" });
-  await page.evaluate(() => {
-    document
-      .querySelector(".studio-spine__poster--flywheel-light")
-      ?.scrollIntoView({ block: "start" });
-  });
-  await page.waitForTimeout(800);
-
+  await poster.evaluate((element) => element.scrollIntoView({ block: "start" }));
+  await page.waitForTimeout(500);
   await poster.screenshot({ path: RAW_PNG, type: "png" });
   await browser.close();
 
@@ -66,7 +62,7 @@ async function main() {
       width: TARGET_W,
       height: TARGET_H,
       fit: "contain",
-      background: "#f4f7ff",
+      background: "#050403",
     })
     .png()
     .toFile(OUT_PNG);

@@ -6,15 +6,10 @@ import { ABOUT_CONTENT } from "@/lib/aboutContent";
 import { withBasePath } from "@/lib/basePath";
 import { useSignalsFlow } from "@/hooks/useSignalsFlow";
 import {
-  SIGNALS_HUB,
-  SIGNALS_KICKER,
-  SIGNALS_KICKER_ACCENT,
-  SIGNALS_RINGS,
-  SIGNALS_RULE,
-  SIGNALS_TITLE,
-  SIGNALS_TITLE_ACCENT,
+  DEFAULT_SIGNALS_MAP,
   type SignalGroup,
   type SignalRing,
+  type SignalsMapConfig,
 } from "@/lib/studio/signalsMap";
 
 // Ring circle (decorative) + label sit at the ring radius — chips are
@@ -38,9 +33,10 @@ const TWINKLE_BASE: Record<SignalRing["id"], number> = {
 
 function polarPct(angleDeg: number, radiusPct: number) {
   const rad = (angleDeg - 90) * (Math.PI / 180);
+  const roundPct = (value: number) => Math.round(value * 10_000) / 10_000;
   return {
-    x: 50 + Math.cos(rad) * radiusPct,
-    y: 50 + Math.sin(rad) * radiusPct,
+    x: roundPct(50 + Math.cos(rad) * radiusPct),
+    y: roundPct(50 + Math.sin(rad) * radiusPct),
   };
 }
 
@@ -148,12 +144,22 @@ function Ring({ ring }: { ring: SignalRing }) {
   );
 }
 
-export function SignalsMapAsset() {
+type SignalsMapAssetProps = {
+  config?: SignalsMapConfig;
+  theme?: "dark" | "light";
+};
+
+export function SignalsMapAsset({
+  config = DEFAULT_SIGNALS_MAP,
+  theme = "dark",
+}: SignalsMapAssetProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   useSignalsFlow(rootRef);
+  const rootClassName =
+    theme === "light" ? "signals-glass signals-glass--light" : "signals-glass";
 
   return (
-    <div className="signals-glass" ref={rootRef}>
+    <div className={rootClassName} ref={rootRef}>
       <div className="spine-glass__aurora" aria-hidden="true" />
       <div className="spine-glass__grain" aria-hidden="true" />
 
@@ -181,10 +187,10 @@ export function SignalsMapAsset() {
 
       <header className="signals-glass__hero">
         <h1 className="signals-glass__title">
-          {accentSpan(SIGNALS_TITLE, SIGNALS_TITLE_ACCENT)}
+          {accentSpan(config.title, config.titleAccent)}
         </h1>
         <p className="signals-glass__kicker">
-          {accentSpan(SIGNALS_KICKER, SIGNALS_KICKER_ACCENT)}
+          {accentSpan(config.kicker, config.kickerAccent)}
         </p>
       </header>
 
@@ -204,22 +210,22 @@ export function SignalsMapAsset() {
             <span className="signals-glass__hub" aria-hidden="true">
               <img
                 className="signals-glass__hub-logo"
-                src={withBasePath(SIGNALS_HUB.src)}
-                alt={SIGNALS_HUB.label}
+                src={withBasePath(config.hub.src)}
+                alt={config.hub.label}
                 width={28}
                 height={28}
               />
             </span>
-            <span className="signals-glass__hub-caption">{SIGNALS_HUB.label}</span>
+            <span className="signals-glass__hub-caption">{config.hub.label}</span>
           </span>
-          {SIGNALS_RINGS.map((ring) => (
+          {config.rings.map((ring) => (
             <Ring key={ring.id} ring={ring} />
           ))}
         </div>
       </div>
 
       <div className="signals-glass__rule">
-        <span className="signals-glass__rule-text">{SIGNALS_RULE}</span>
+        <span className="signals-glass__rule-text">{config.rule}</span>
       </div>
 
       <img

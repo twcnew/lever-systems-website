@@ -30,7 +30,13 @@ export default function FlywheelStudioRoute() {
 
           <div className="studio-spine__stage studio-spine__stage--flywheel">
             <div className="studio-spine__poster studio-spine__poster--modern">
-              <GtmFlywheelAsset />
+              <GtmFlywheelAsset theme="dark" />
+            </div>
+
+            <p className="studio-spine__variant-label">Light version</p>
+
+            <div className="studio-spine__poster studio-spine__poster--modern studio-spine__poster--flywheel-light">
+              <GtmFlywheelAsset theme="light" />
             </div>
           </div>
         </div>

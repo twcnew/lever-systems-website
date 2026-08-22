@@ -19,8 +19,9 @@ import {
   type FlywheelChannel,
 } from "@/lib/studio/gtmFlywheel";
 
-const FLOW_STEPS = ["content", "ads", "outbound", "hub"] as const;
-type FlowStep = (typeof FLOW_STEPS)[number];
+const CARD_STEPS = [1, 2, 3, 4, 5] as const;
+type CardStep = (typeof CARD_STEPS)[number];
+type FlywheelTheme = "dark" | "light";
 
 function accentSpan(text: string, accent?: string) {
   if (!accent || !text.includes(accent)) return text;
@@ -34,7 +35,7 @@ function accentSpan(text: string, accent?: string) {
   );
 }
 
-function useFlywheelSequence(rootRef: RefObject<HTMLDivElement | null>) {
+function useFlywheelCardSequence(rootRef: RefObject<HTMLDivElement | null>) {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -56,7 +57,7 @@ function useFlywheelSequence(rootRef: RefObject<HTMLDivElement | null>) {
 
     const showCompleteState = () => {
       clearTimer();
-      root.dataset.flowStep = "hub";
+      root.dataset.activeStep = "all";
     };
 
     const schedule = () => {
@@ -67,14 +68,14 @@ function useFlywheelSequence(rootRef: RefObject<HTMLDivElement | null>) {
       }
       if (!visible || !pageVisible) return;
 
-      const step = FLOW_STEPS[stepIndex] satisfies FlowStep;
-      root.dataset.flowStep = step;
+      const step = CARD_STEPS[stepIndex] satisfies CardStep;
+      root.dataset.activeStep = String(step);
       timeoutId = window.setTimeout(
         () => {
-          stepIndex = (stepIndex + 1) % FLOW_STEPS.length;
+          stepIndex = (stepIndex + 1) % CARD_STEPS.length;
           schedule();
         },
-        step === "hub" ? 2200 : 1100,
+        1000,
       );
     };
 
@@ -98,7 +99,8 @@ function useFlywheelSequence(rootRef: RefObject<HTMLDivElement | null>) {
       else schedule();
     };
 
-    root.dataset.flowStep = reducedMotion.matches ? "hub" : "content";
+    root.dataset.flowStep = "static";
+    root.dataset.activeStep = reducedMotion.matches ? "all" : "1";
     observer.observe(root);
     document.addEventListener("visibilitychange", onVisibilityChange);
     reducedMotion.addEventListener("change", onMotionChange);
@@ -112,15 +114,21 @@ function useFlywheelSequence(rootRef: RefObject<HTMLDivElement | null>) {
   }, [rootRef]);
 }
 
-function ChannelPoints({ channel }: { channel: FlywheelChannel }) {
+function ChannelPoints({
+  channel,
+  instanceId,
+}: {
+  channel: FlywheelChannel;
+  instanceId: string;
+}) {
   return (
     <section
       className={`flywheel-glass__channel flywheel-glass__channel--${channel.id}`}
       data-channel={channel.id}
-      aria-labelledby={`flywheel-channel-${channel.id}`}
+      aria-labelledby={`${instanceId}-channel-${channel.id}`}
     >
       <h2
-        id={`flywheel-channel-${channel.id}`}
+        id={`${instanceId}-channel-${channel.id}`}
         className="flywheel-glass__channel-label"
       >
         {channel.label}
@@ -140,7 +148,37 @@ function ChannelPoints({ channel }: { channel: FlywheelChannel }) {
   );
 }
 
-function VennSurface() {
+function VennSurface({
+  instanceId,
+  theme,
+}: {
+  instanceId: string;
+  theme: FlywheelTheme;
+}) {
+  const fills =
+    theme === "light"
+      ? {
+          content: ["rgba(55, 111, 235, .58)", "rgba(55, 111, 235, .31)", "rgba(55, 111, 235, .10)"],
+          ads: ["rgba(129, 69, 225, .56)", "rgba(129, 69, 225, .29)", "rgba(129, 69, 225, .09)"],
+          outbound: ["rgba(14, 165, 233, .54)", "rgba(14, 165, 233, .27)", "rgba(14, 165, 233, .09)"],
+        }
+      : {
+          content: ["rgba(90, 139, 228, .48)", "rgba(90, 139, 228, .24)", "rgba(90, 139, 228, .08)"],
+          ads: ["rgba(119, 91, 218, .46)", "rgba(119, 91, 218, .23)", "rgba(119, 91, 218, .08)"],
+          outbound: ["rgba(61, 166, 238, .44)", "rgba(61, 166, 238, .22)", "rgba(61, 166, 238, .08)"],
+        };
+
+  const contentFillId = `${instanceId}-content-fill`;
+  const adsFillId = `${instanceId}-ads-fill`;
+  const outboundFillId = `${instanceId}-outbound-fill`;
+  const contentLabelPathId = `${instanceId}-content-label-path`;
+  const adsLabelPathId = `${instanceId}-ads-label-path`;
+  const outboundLabelPathId = `${instanceId}-outbound-label-path`;
+  const outboundLabelPath =
+    theme === "light"
+      ? "M 535 760 Q 650 770 740 722"
+      : "M 535 748 Q 650 758 740 710";
+
   return (
     <svg
       className="flywheel-glass__venn-surface"
@@ -150,44 +188,84 @@ function VennSurface() {
       focusable="false"
     >
       <defs>
-        <radialGradient id="flywheel-content-fill" cx="50%" cy="38%" r="68%">
-          <stop offset="0" stopColor="rgba(90, 139, 228, .42)" />
-          <stop offset=".72" stopColor="rgba(90, 139, 228, .20)" />
-          <stop offset="1" stopColor="rgba(90, 139, 228, .07)" />
+        <radialGradient id={contentFillId} cx="50%" cy="38%" r="68%">
+          <stop offset="0" stopColor={fills.content[0]} />
+          <stop offset=".72" stopColor={fills.content[1]} />
+          <stop offset="1" stopColor={fills.content[2]} />
         </radialGradient>
-        <radialGradient id="flywheel-ads-fill" cx="42%" cy="44%" r="68%">
-          <stop offset="0" stopColor="rgba(102, 91, 208, .40)" />
-          <stop offset=".72" stopColor="rgba(102, 91, 208, .20)" />
-          <stop offset="1" stopColor="rgba(102, 91, 208, .07)" />
+        <radialGradient id={adsFillId} cx="42%" cy="44%" r="68%">
+          <stop offset="0" stopColor={fills.ads[0]} />
+          <stop offset=".72" stopColor={fills.ads[1]} />
+          <stop offset="1" stopColor={fills.ads[2]} />
         </radialGradient>
-        <radialGradient id="flywheel-outbound-fill" cx="58%" cy="44%" r="68%">
-          <stop offset="0" stopColor="rgba(84, 164, 255, .38)" />
-          <stop offset=".72" stopColor="rgba(84, 164, 255, .18)" />
-          <stop offset="1" stopColor="rgba(84, 164, 255, .07)" />
+        <radialGradient id={outboundFillId} cx="58%" cy="44%" r="68%">
+          <stop offset="0" stopColor={fills.outbound[0]} />
+          <stop offset=".72" stopColor={fills.outbound[1]} />
+          <stop offset="1" stopColor={fills.outbound[2]} />
         </radialGradient>
+        <path
+          id={contentLabelPathId}
+          d="M 315 75 Q 460 15 605 75"
+        />
+        <path
+          id={adsLabelPathId}
+          d="M 110 660 Q 205 760 330 775"
+        />
+        <path
+          id={outboundLabelPathId}
+          d={outboundLabelPath}
+        />
       </defs>
       <g className="flywheel-glass__disc flywheel-glass__disc--content">
-        <circle cx="460" cy="280" r="276" fill="url(#flywheel-content-fill)" />
+        <circle cx="460" cy="280" r="276" fill={`url(#${contentFillId})`} />
         <circle className="flywheel-glass__disc-line" cx="460" cy="280" r="276" />
       </g>
       <g className="flywheel-glass__disc flywheel-glass__disc--ads">
-        <circle cx="330" cy="500" r="276" fill="url(#flywheel-ads-fill)" />
+        <circle cx="330" cy="500" r="276" fill={`url(#${adsFillId})`} />
         <circle className="flywheel-glass__disc-line" cx="330" cy="500" r="276" />
       </g>
       <g className="flywheel-glass__disc flywheel-glass__disc--outbound">
-        <circle cx="590" cy="500" r="276" fill="url(#flywheel-outbound-fill)" />
+        <circle cx="590" cy="500" r="276" fill={`url(#${outboundFillId})`} />
         <circle className="flywheel-glass__disc-line" cx="590" cy="500" r="276" />
+      </g>
+      <g className="flywheel-glass__venn-labels">
+        <text className="flywheel-glass__venn-label flywheel-glass__venn-label--content">
+          <textPath href={`#${contentLabelPathId}`} startOffset="50%">
+            CONTENT
+          </textPath>
+        </text>
+        <text className="flywheel-glass__venn-label flywheel-glass__venn-label--ads">
+          <textPath href={`#${adsLabelPathId}`} startOffset="50%">
+            ADS
+          </textPath>
+        </text>
+        <text className="flywheel-glass__venn-label flywheel-glass__venn-label--outbound">
+          <textPath href={`#${outboundLabelPathId}`} startOffset="50%">
+            OUTBOUND
+          </textPath>
+        </text>
       </g>
     </svg>
   );
 }
 
-export function GtmFlywheelAsset() {
+export function GtmFlywheelAsset({
+  theme = "dark",
+}: {
+  theme?: FlywheelTheme;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
-  useFlywheelSequence(rootRef);
+  useFlywheelCardSequence(rootRef);
+  const instanceId = `flywheel-${theme}`;
 
   return (
-    <div className="flywheel-glass" ref={rootRef} data-flow-step="content">
+    <div
+      className={`flywheel-glass flywheel-glass--${theme}`}
+      ref={rootRef}
+      data-flow-step="static"
+      data-active-step="1"
+      data-theme={theme}
+    >
       <div className="spine-glass__aurora" aria-hidden="true" />
       <div className="flywheel-glass__grid" aria-hidden="true" />
       <div className="spine-glass__grain" aria-hidden="true" />
@@ -210,6 +288,11 @@ export function GtmFlywheelAsset() {
             ·
           </span>
           <span className="spine-glass__role">{ABOUT_CONTENT.founder.role}</span>
+          {theme === "light" ? (
+            <span className="spine-glass__dot" aria-hidden="true">
+              ·
+            </span>
+          ) : null}
           <Brand className="spine-glass__wordmark" />
         </div>
       </header>
@@ -228,10 +311,14 @@ export function GtmFlywheelAsset() {
         role="group"
         aria-label="Three-channel GTM flywheel"
       >
-        <VennSurface />
+        <VennSurface instanceId={instanceId} theme={theme} />
 
         {FLYWHEEL_CHANNELS.map((channel) => (
-          <ChannelPoints key={channel.id} channel={channel} />
+          <ChannelPoints
+            key={channel.id}
+            channel={channel}
+            instanceId={instanceId}
+          />
         ))}
 
         {FLYWHEEL_OVERLAPS.map((overlap) => (
@@ -257,6 +344,7 @@ export function GtmFlywheelAsset() {
           <article
             key={step.n}
             className={`flywheel-glass__step flywheel-glass__step--${step.n}`}
+            data-step={step.n}
           >
             <span className="flywheel-glass__step-num">{step.n}</span>
             <h2 className="flywheel-glass__step-title">{step.title}</h2>

@@ -59,10 +59,20 @@ const TEMPLATES: Template[] = [
     href: "/studio/flywheel",
     thumb: "/studio/flywheel.png",
     thumbAlt:
-      "How Pipeline Multiplies — content, ads and outbound compounding on one ICP",
+      "How Pipeline Multiplies — light blue, violet and cyan GTM flywheel",
     title: "Pipeline Multiplies",
     description:
       "Content, ads and outbound aligned on one ICP. Three coordinated channels turn isolated touches into a compounding GTM flywheel.",
+    tag: "Liquid glass",
+  },
+  {
+    href: "/studio/channel-matrix",
+    thumb: "/studio/channel-matrix.png",
+    thumbAlt:
+      "Outbound Channel Matrix — Cold Email vs LinkedIn DMs vs Cold Calling",
+    title: "Outbound Channel Matrix",
+    description:
+      "Ten factors, three outbound channels. Match email, LinkedIn and calling to the right account tier.",
     tag: "Liquid glass",
   },
   {
